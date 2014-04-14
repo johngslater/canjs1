@@ -3,6 +3,19 @@ canjs1
 
 google map + placements + canjs w/ curtis
 
+to run
+have file server.js  with
+
+var connect = require('connect');
+connect.createServer(
+    connect.static('/Users/johnslater/dev/canjs/canjsmeetup-master/canjs1')
+).listen(8080);
+
+
+then in the shell do
+ node server.js
+
+
 some links to my existing stuff  --------------------------------------
 
 
