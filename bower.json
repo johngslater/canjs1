@@ -1,0 +1,10 @@
+{
+	"name": "gThrive Demo",
+	"version": "0.0.1",
+	"dependencies": {
+		"canjs": "~2.0.6",
+		"requirejs": "~2.1.11",
+		"requirejs-plugins": "~1.0.2",
+		"jquery": "*"
+	}
+}
