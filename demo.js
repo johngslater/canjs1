@@ -10,12 +10,25 @@
 		}
 	};
 
+	// Using an Object to store markers instead of a List
+	// -> http://canjs.com/docs/can.Model.models.html  jgs: can you do this?!!!
+
+	// Long polling
+	// -> http://canjs.com/docs/can.Model.makeFindAll.html
+	// -> http://canjs.com/docs/can.Model.findAll.html
+
+	// RequireJS + CanJS
+	// -> http://canjs.com/guides/using-loading.html#section_AMD
+
+	// Make Require and Google play nices
+	// -> https://github.com/millermedeiros/requirejs-plugins
 	Marker = can.Model.extend({
 		findAll: 'GET /markers',
 		findOne: 'GET /markers/{id}',
 		create: 'POST /markers',
 		update: 'PUT /markers/{id}',
 		destroy: 'DELETE /markers/{id}',
+		//http://canjs.com/docs/can.Map.attributes.html
 		attributes: {
 			'latLng': 'latlng',
 			'marker': 'marker'
@@ -39,6 +52,7 @@
 		}
 	}, {
 		setup: function(data){
+			// Create a Map Marker
 			data.marker = new MarkerWithLabel({
 				draggable: true,
 				icon: 'green-dot.png',
@@ -50,7 +64,7 @@
 		},
 		bindMapEvents: function(list) {
 			this.mapEvents = [];
-
+			// http://api.jquery.com/jQuery.proxy/
 			this.mapEvents.push(google.maps.event.addListener(this.marker, 'click', $.proxy(this.forwardEvent, this, 'click', list)));
 			this.mapEvents.push(google.maps.event.addListener(this.marker, 'dragstart', $.proxy(this.forwardEvent, this, 'dragstart', list)));
 			this.mapEvents.push(google.maps.event.addListener(this.marker, 'drag', $.proxy(this.forwardEvent, this, 'drag', list)));
@@ -62,6 +76,7 @@
 			this.mapEvents = [];
 		},
 		forwardEvent: function(type, list, ev) {
+			//this triggers events on the Marker.List instance (list)
 			can.trigger(list, type, [ev, this]);
 		},
 		show: function(map) {
@@ -82,6 +97,7 @@
 		}
 	});
 
+	// Simulate AJAX responses
 	var MARKERS = [
 		{
 			name:'foo',
@@ -95,6 +111,7 @@
 		}
 	];
 
+	// http://canjs.com/docs/can.fixture.types.Store.html
 	var markerStore = can.fixture.store(MARKERS.length, function(i) {
 		var data = MARKERS[i] ? MARKERS[i]: {};
 		data.id = i + 1;
@@ -111,6 +128,7 @@
 		'DELETE /markers/{id}': markerStore.destroy
 	});
 
+	// App Component
 	can.Component.extend({
 		tag: 'demo-app',
 		template: '<map-screen class="{{^showMap}}hidden{{/showMap}}"></map-screen><marker-screen class="{{^showEdit}}hidden{{/showEdit}}"></marker-screen>',
@@ -126,6 +144,7 @@
 		}
 	});
 
+	// Map Screen
 	can.Component.extend({
 		tag: 'map-screen',
 		template: '<map></map>' +
@@ -169,6 +188,8 @@
 		}
 	});
 
+	//Construct -> Map -> Model -> Marker
+	//Construct -> Map -> List -> Marker.List
 	can.Component.extend({
 		tag: 'map',
 		template: '<div class="map"></div>',
@@ -203,18 +224,19 @@
 				this.scope.markers.replace(Marker.findAll({}));
 			},
 			'{Marker} created': function(Marker, ev, newMarker) {
-				console.log('created', arguments)
 				this.scope.markers.push(newMarker);
 			},
 			'{scope.markers} add': function(markers, ev, added, index) {
 				var scope = this.scope;
 				can.each(added, function(m){
+					//Play nice with Google
 					m.bindMapEvents(markers);
 					m.show(scope.map);
 				});
 			},
 			'{scope.markers} remove': function(markers, ev, removed, index) {
 				can.each(removed, function(m){
+					//Play nice with Google
 					m.unbindMapEvents();
 					m.remove();
 				});
