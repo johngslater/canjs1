@@ -1,0 +1,916 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e7230a2c-8279-415f-b207-0799367378d9" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/event.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/event.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/event.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bower_components/jquery/src/var/trim.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/.bower.json" afterPath="$PROJECT_DIR$/bower_components/canjs/.bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/.bower.json" afterPath="$PROJECT_DIR$/bower_components/jquery/.bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/src/exports/amd.js" afterPath="$PROJECT_DIR$/bower_components/jquery/src/exports/amd.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/map/attributes.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/map/attributes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/map/attributes.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/map/attributes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/map/attributes/attributes.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/map/attributes/attributes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/map/backup.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/map/backup.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/map/backup.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/map/backup.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/map/backup/backup.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/map/backup/backup.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/batch.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/batch.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/batch.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/batch.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/batch/batch.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/batch/batch.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/bind.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/bind.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/bind.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/bind.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/bind/bind.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/bind/bind.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/bindings.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/bindings.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/bindings.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/bindings.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/bindings/bindings.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/bindings/bindings.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/bower.json" afterPath="$PROJECT_DIR$/bower_components/canjs/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/bower.json" afterPath="$PROJECT_DIR$/bower_components/jquery/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.construct.proxy.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.construct.proxy.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.construct.super.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.construct.super.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.control.plugin.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.control.plugin.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.dojo.dev.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.dojo.dev.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.dojo.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.dojo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.dojo.min.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.dojo.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.ejs.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.ejs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.fixture.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.fixture.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.jquery.dev.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.jquery.dev.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.jquery.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.jquery.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.jquery.min.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.jquery.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/can.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/can.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/can.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/can.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/can.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/can.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/can.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/can.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.list.sort.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.list.sort.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.map.attributes.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.map.attributes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.map.backup.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.map.backup.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.map.delegate.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.map.delegate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.map.list.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.map.list.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.map.setter.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.map.setter.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.map.validations.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.map.validations.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.model.queue.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.model.queue.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.mootools.dev.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.mootools.dev.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.mootools.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.mootools.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.mootools.min.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.mootools.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.object.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.object.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.route.pushstate.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.route.pushstate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.view.modifiers.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.view.modifiers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.yui.dev.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.yui.dev.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.yui.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.yui.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.yui.min.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.yui.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.zepto.dev.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.zepto.dev.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.zepto.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.zepto.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/can.zepto.min.js" afterPath="$PROJECT_DIR$/bower_components/canjs/can.zepto.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/component.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/component.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/component/component.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/component/component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/compute.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/compute.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/compute.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/compute.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/compute/compute.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/compute/compute.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/construct.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/construct.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/construct.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/construct.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/construct/construct.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/construct/construct.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/control.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/control.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/control.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/control.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/control/control.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/control/control.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/src/core.js" afterPath="$PROJECT_DIR$/bower_components/jquery/src/core.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/src/css.js" afterPath="$PROJECT_DIR$/bower_components/jquery/src/css.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/src/data.js" afterPath="$PROJECT_DIR$/bower_components/jquery/src/data.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/src/css/defaultDisplay.js" afterPath="$PROJECT_DIR$/bower_components/jquery/src/css/defaultDisplay.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/deferred.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/deferred.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/deferred.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/deferred.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/deferred.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/deferred.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/map/delegate.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/map/delegate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/map/delegate.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/map/delegate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/map/delegate/delegate.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/map/delegate/delegate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo.html" afterPath="$PROJECT_DIR$/demo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo.js" afterPath="$PROJECT_DIR$/demo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/string/deparam.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/string/deparam.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/string/deparam.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/string/deparam.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/string/deparam/deparam.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/string/deparam/deparam.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/dojo.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/dojo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/dojo.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/dojo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/dojo/dojo.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/dojo/dojo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/array/each.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/array/each.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/array/each.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/array/each.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/array/each.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/array/each.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/src/effects.js" afterPath="$PROJECT_DIR$/bower_components/jquery/src/effects.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/ejs.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/ejs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/ejs.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/ejs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/ejs/ejs.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/ejs/ejs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/elements.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/elements.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/elements.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/elements.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/elements.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/elements.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/src/event.js" afterPath="$PROJECT_DIR$/bower_components/jquery/src/event.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/fixture.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/fixture.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/fixture.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/fixture.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/fixture/fixture.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/fixture/fixture.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/fragment.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/fragment.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/fragment.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/fragment.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/fragment.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/fragment.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/hashchange.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/hashchange.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/hashchange.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/hashchange.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/hashchange.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/hashchange.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/inserted.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/inserted.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/inserted.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/inserted.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/inserted/inserted.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/inserted/inserted.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/object/isplain.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/object/isplain.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/object/isplain.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/object/isplain.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/object/isplain/isplain.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/object/isplain/isplain.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/jquery.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/jquery.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/jquery.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/jquery.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/jquery/jquery.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/jquery/jquery.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/dist/jquery.js" afterPath="$PROJECT_DIR$/bower_components/jquery/dist/jquery.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/dist/jquery.min.js" afterPath="$PROJECT_DIR$/bower_components/jquery/dist/jquery.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/dist/jquery.min.map" afterPath="$PROJECT_DIR$/bower_components/jquery/dist/jquery.min.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/library.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/library.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/library.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/library.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/list.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/list.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/map/list.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/map/list.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/list.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/list.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/map/list.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/map/list.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/list/list.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/list/list.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/map/list/list.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/map/list/list.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/live.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/live.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/live.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/live.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/live/live.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/live/live.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/src/ajax/load.js" afterPath="$PROJECT_DIR$/bower_components/jquery/src/ajax/load.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/src/manipulation.js" afterPath="$PROJECT_DIR$/bower_components/jquery/src/manipulation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/map.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/map.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/map.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/map.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/map/map.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/map/map.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/model.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/model.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/model.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/model.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/model/model.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/model/model.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/modifiers.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/modifiers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/modifiers.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/modifiers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/modifiers/modifiers.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/modifiers/modifiers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/mootools.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/mootools.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/mootools.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/mootools.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/mootools/mootools.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/mootools/mootools.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/mustache.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/mustache.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/mustache.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/mustache.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/mustache/mustache.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/mustache/mustache.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/node_lists.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/node_lists.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/node_lists.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/node_lists.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/node_lists/node_lists.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/node_lists/node_lists.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/object.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/object.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/object.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/object.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/object/object.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/object/object.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/observe.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/observe.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/observe.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/observe.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/observe/observe.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/observe/observe.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/control/plugin.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/control/plugin.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/control/plugin.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/control/plugin.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/control/plugin/plugin.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/control/plugin/plugin.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/construct/proxy.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/construct/proxy.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/construct/proxy.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/construct/proxy.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/construct/proxy/proxy.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/construct/proxy/proxy.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/route/pushstate.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/route/pushstate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/route/pushstate.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/route/pushstate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/route/pushstate/pushstate.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/route/pushstate/pushstate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/model/queue.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/model/queue.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/model/queue.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/model/queue.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/model/queue/queue.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/model/queue/queue.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/readme.md" afterPath="$PROJECT_DIR$/bower_components/canjs/readme.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/src/core/ready.js" afterPath="$PROJECT_DIR$/bower_components/jquery/src/core/ready.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/render.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/render.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/render.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/render.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/render.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/render.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/route.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/route.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/control/route.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/control/route.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/route.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/route.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/control/route.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/control/route.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/control/route/route.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/control/route/route.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/route/route.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/route/route.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/scanner.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/scanner.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/scanner.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/scanner.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/scanner.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/scanner.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/scope.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view/scope.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/scope.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/view/scope.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/scope/scope.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/scope/scope.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/src/selector-native.js" afterPath="$PROJECT_DIR$/bower_components/jquery/src/selector-native.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/map/setter.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/map/setter.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/map/setter.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/map/setter.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/map/setter/setter.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/map/setter/setter.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/src/sizzle/dist/sizzle.js" afterPath="$PROJECT_DIR$/bower_components/jquery/src/sizzle/dist/sizzle.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/src/sizzle/dist/sizzle.min.js" afterPath="$PROJECT_DIR$/bower_components/jquery/src/sizzle/dist/sizzle.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/src/sizzle/dist/sizzle.min.map" afterPath="$PROJECT_DIR$/bower_components/jquery/src/sizzle/dist/sizzle.min.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/map/sort.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/map/sort.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/map/sort.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/map/sort.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/map/sort/sort.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/map/sort/sort.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/string.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/string.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/string.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/string.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/string/string.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/string/string.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/construct/super.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/construct/super.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/construct/super.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/construct/super.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/construct/super/super.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/construct/super/super.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/src/css/support.js" afterPath="$PROJECT_DIR$/bower_components/jquery/src/css/support.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/src/manipulation/support.js" afterPath="$PROJECT_DIR$/bower_components/jquery/src/manipulation/support.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/util.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/util.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/src/attributes/val.js" afterPath="$PROJECT_DIR$/bower_components/jquery/src/attributes/val.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/map/validations.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/map/validations.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/map/validations.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/map/validations.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/map/validations/validations.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/map/validations/validations.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/view.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/view.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/view.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/view.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/view/view.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/jquery/src/ajax/xhr.js" afterPath="$PROJECT_DIR$/bower_components/jquery/src/ajax/xhr.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/yui.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/yui.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/yui.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/yui.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/yui/yui.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/yui/yui.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/zepto.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd-dev/can/util/zepto.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/zepto.js" afterPath="$PROJECT_DIR$/bower_components/canjs/amd/can/util/zepto.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/zepto/zepto.js" afterPath="$PROJECT_DIR$/bower_components/canjs/steal/canjs/util/zepto/zepto.js" />
+    </list>
+    <ignored path="canjs1.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="DebuggerManager">
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <breakpoint_rules />
+    <ui_properties />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="canjs1" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="demo.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="39" selection-start="976" selection-end="2351" vertical-scroll-proportion="2.0833333" vertical-offset="695" max-vertical-offset="2460">
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="10" selection-start="820" selection-end="820" vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="720">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="demo.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="0" selection-start="0" selection-end="7488" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4350">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="temp.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/temp.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="176" column="18" selection-start="6516" selection-end="6516" vertical-scroll-proportion="0.4832536" vertical-offset="2135" max-vertical-offset="3300">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="marker-screen.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/marker-screen/marker-screen.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="11" selection-start="58" selection-end="58" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="demo-app.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo-app/demo-app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="3" selection-start="628" selection-end="628" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mycontrol.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mycontrol/mycontrol.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="48" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/bower.json" />
+        <option value="$PROJECT_DIR$/demo.html" />
+        <option value="$PROJECT_DIR$/mycontrol/mycontrol.js" />
+        <option value="$PROJECT_DIR$/demo.js" />
+        <option value="$PROJECT_DIR$/demo-app/demo-app.js" />
+        <option value="$PROJECT_DIR$/map-screen/demo-app.js" />
+        <option value="$PROJECT_DIR$/marker-screen/marker-screen.js" />
+        <option value="$PROJECT_DIR$/temp.js" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="4" />
+    <option name="y" value="22" />
+    <option name="width" value="1372" />
+    <option name="height" value="1178" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="canjs1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="canjs1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="canjs1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="canjs1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="canjs1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mycontrol" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="canjs1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="canjs1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="marker-screen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="canjs1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="canjs1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="map-screen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="canjs1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="canjs1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demo-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="canjs1" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="canjs1" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="canjs1" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Specs2RunConfiguration" factoryName="Specs2">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <extension name="scalaCoverage" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="$PROJECT_DIR$" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <browser start="false" url="" with-js-debugger="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="canjs1" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="canjs1" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="canjs1" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="canjs1" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="ScalaTestRunConfiguration" factoryName="ScalaTest">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <extension name="scalaCoverage" />
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="package" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workingDirectory" value="$PROJECT_DIR$" />
+      <setting name="searchForTest" value="Across module dependencies" />
+      <setting name="testName" value="" />
+      <setting name="testKind" value="Class" />
+      <setting name="showProgressMessages" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <list size="0" />
+    <configuration name="&lt;template&gt;" type="TestNG" default="true" selected="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e7230a2c-8279-415f-b207-0799367378d9" name="Default" comment="" />
+      <created>1399484739990</created>
+      <updated>1399484739990</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="4" y="22" width="1372" height="1178" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3518797" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="1" selection-start="167" selection-end="167" vertical-scroll-proportion="0.13056093" vertical-offset="0" max-vertical-offset="1034">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="39" selection-start="976" selection-end="2351" vertical-scroll-proportion="2.0833333" vertical-offset="695" max-vertical-offset="2460">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="10" selection-start="820" selection-end="820" vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="720">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="0" selection-end="7488" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4350">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/marker-screen/marker-screen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="11" selection-start="58" selection-end="58" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="495">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo-app/demo-app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="3" selection-start="628" selection-end="628" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mycontrol/mycontrol.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="48" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/temp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="176" column="18" selection-start="6516" selection-end="6516" vertical-scroll-proportion="0.4832536" vertical-offset="2135" max-vertical-offset="3300">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+

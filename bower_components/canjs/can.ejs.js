@@ -1,8 +1,8 @@
 /*!
- * CanJS - 2.0.7
+ * CanJS - 2.1.0
  * http://canjs.us/
  * Copyright (c) 2014 Bitovi
- * Wed, 26 Mar 2014 16:12:33 GMT
+ * Mon, 05 May 2014 22:15:57 GMT
  * Licensed MIT
  * Includes: can/view/ejs
  * Download from: http://canjs.com
@@ -11,13 +11,10 @@
 
     // ## view/ejs/ejs.js
     var __m1 = (function(can) {
-        // ## ejs.js
-        // `can.EJS`  
-        // _Embedded JavaScript Templates._
-        // Helper methods.
+        // ## Helper methods
         var extend = can.extend,
             EJS = function(options) {
-                // Supports calling EJS without the constructor
+                // Supports calling EJS without the constructor.
                 // This returns a function that renders the template.
                 if (this.constructor !== EJS) {
                     var ejs = new EJS(options);
@@ -37,37 +34,50 @@
                 extend(this, options);
                 this.template = this.scanner.scan(this.text, this.name);
             };
+        // Expose EJS via the `can` object.
         can.EJS = EJS;
 
         EJS.prototype.
-
+        // ## Render
+        // Render a view object with data and helpers.
         render = function(object, extraHelpers) {
             object = object || {};
             return this.template.fn.call(object, object, new EJS.Helpers(object, extraHelpers || {}));
         };
         extend(EJS.prototype, {
-
+                // ## Scanner
+                // Singleton scanner instance for parsing templates. See [scanner.js](scanner.html)
+                // for more information.
+                // ### Text
+                // #### Definitions
+                // * `outStart` - Wrapper start text for view function.
+                // * `outEnd` - Wrapper end text for view function.
+                // * `argNames` - Arguments passed into view function.
                 scanner: new can.view.Scanner({
                         text: {
                             outStart: 'with(_VIEW) { with (_CONTEXT) {',
-                            outEnd: '}}',
-                            argNames: '_CONTEXT,_VIEW'
+                            outEnd: "}}",
+                            argNames: '_CONTEXT,_VIEW',
+                            context: "this"
                         },
-
+                        // ### Tokens
+                        // An ordered token registry for the scanner. Scanner makes evaluations
+                        // based on which tags are considered opening/closing as well as escaped, etc.
                         tokens: [
-                            ["templateLeft", "<%%"], // Template
-                            ["templateRight", "%>"], // Right Template
-                            ["returnLeft", "<%=="], // Return Unescaped
-                            ["escapeLeft", "<%="], // Return Escaped
-                            ["commentLeft", "<%#"], // Comment
-                            ["left", "<%"], // Run --- this is hack for now
-                            ["right", "%>"], // Right -> All have same FOR Mustache ...
+                            ["templateLeft", "<%%"],
+                            ["templateRight", "%>"],
+                            ["returnLeft", "<%=="],
+                            ["escapeLeft", "<%="],
+                            ["commentLeft", "<%#"],
+                            ["left", "<%"],
+                            ["right", "%>"],
                             ["returnRight", "%>"]
                         ],
-                        helpers: [
-
-                            {
+                        // ### Helpers
+                        helpers: [{
+                                // Regex to see if its a func like `()->`.
                                 name: /\s*\(([\$\w]+)\)\s*->([^\n]*)/,
+                                // Evaluate rocket syntax function with correct context.
                                 fn: function(content) {
                                     var quickFunc = /\s*\(([\$\w]+)\)\s*->([^\n]*)/,
                                         parts = content.match(quickFunc);
@@ -76,7 +86,16 @@
                                 }
                             }
                         ],
-
+                        // ### transform
+                        // Transforms the EJS template to add support for shared blocks.
+                        // Essentially, this breaks up EJS tags into multiple EJS tags
+                        // if they contained unmatched brackets.
+                        // For example, this doesn't work:
+                        // `<% if (1) { %><% if (1) { %> hi <% } } %>`
+                        // ...without isolated EJS blocks:
+                        // `<% if (1) { %><% if (1) { %> hi <% } %><% } %>`
+                        // The result of transforming:
+                        // `<% if (1) { %><% %><% if (1) { %><% %> hi <% } %><% } %>`
                         transform: function(source) {
                             return source.replace(/<%([\s\S]+?)%>/gm, function(whole, part) {
                                 var brackets = [],
@@ -114,7 +133,8 @@
                                     }
                                     result.push(part.substring(last), '%>');
                                     return result.join('');
-                                } // Otherwise return the original
+                                }
+                                // Otherwise return the original
                                 else {
                                     return '<%' + part + '%>';
                                 }
@@ -122,6 +142,10 @@
                         }
                     })
             });
+
+        // ## Helpers
+        // In your EJS view you can then call the helper on an element tag:
+        // `<div <%= upperHtml('javascriptmvc') %>></div>`
         EJS.Helpers = function(data, extras) {
             this._data = data;
             this._extras = extras;
@@ -129,12 +153,14 @@
         };
 
         EJS.Helpers.prototype = {
-            // TODO Deprecated!!
+            // List allows for live binding a can.List easily within a template.
             list: function(list, cb) {
                 can.each(list, function(item, i) {
                     cb(item, i, list);
                 });
             },
+            // `each` iterates through a enumerated source(such as can.List or array)
+            // and sets up live binding when possible.
             each: function(list, cb) {
                 // Normal arrays don't get live updated
                 if (can.isArray(list)) {
@@ -144,7 +170,7 @@
                 }
             }
         };
-        // Options for `steal`'s build.
+        // Registers options for a `steal` build.
         can.view.register({
                 suffix: 'ejs',
                 script: function(id, src) {
@@ -161,6 +187,9 @@
                         });
                 }
             });
+        can.ejs.Helpers = EJS.Helpers;
+
+
         return can;
     })(window.can, undefined, undefined, undefined, undefined, undefined);
 

@@ -5,14 +5,14 @@
 <meta name='MobileOptimized'    content='320'>
 <meta name='format-detection'   content='telephone=no'>
 <meta name='viewport'           content='width=device-width, minimum-scale=1.0, maximum-scale=1.0'>
-<script src="http://code.jquery.com/jquery.js"></script>
-<script type="text/javascript" 
+<script data-main="demo.js" src="bower_components/requirejs/require.js"></script>
+<!--script type="text/javascript"
   src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry&v=3.3">
 </script>
 <script type="text/javascript" 
   src="http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerwithlabel/1.1.5/src/markerwithlabel_packed.js"></script>
-<script type='text/javascript' src="http://canjs.com/release/2.0.1/can.jquery.js"></script>
-<script type="text/javascript">
+<script type='text/javascript' src="http://canjs.com/release/2.0.1/can.jquery.js"></script-->
+<!--script type="text/javascript">
 //from mywebbasedcomputer.com/users/johngslater/tech/maps/labeledPins.html
 
 var GoogleMap=function(jQn){
@@ -127,9 +127,10 @@ var screenMngr=(function(){
   return self;
 })();
 
-</script>
+</script-->
 </head>
 <body> TBD: a model&controller for focus, login name&pswd,  steal, swipe, localStorage,
+<div id="demo"></div>
 <div id='screens'>
   <div id='mapScreen' class='screen'>
     <div id="map1" style="width:200px; height:200px"></div>

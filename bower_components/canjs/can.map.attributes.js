@@ -1,8 +1,8 @@
 /*!
- * CanJS - 2.0.7
+ * CanJS - 2.1.0
  * http://canjs.us/
  * Copyright (c) 2014 Bitovi
- * Wed, 26 Mar 2014 16:12:33 GMT
+ * Mon, 05 May 2014 22:15:57 GMT
  * Licensed MIT
  * Includes: can/map/attributes
  * Download from: http://canjs.com
@@ -11,10 +11,14 @@
 
     // ## map/attributes/attributes.js
     var __m1 = (function(can, Map) {
+
+
+
         can.each([
                 can.Map,
                 can.Model
             ], function(clss) {
+
                 // in some cases model might not be defined quite yet.
                 if (clss === undefined) {
                     return;
@@ -25,7 +29,6 @@
                 can.extend(clss, {
 
                         attributes: {},
-
 
                         convert: {
                             'date': function(str) {
@@ -75,7 +78,6 @@
                                 return typeof construct === 'function' ? construct.call(context, val, oldVal) : val;
                             }
                         },
-
                         serialize: {
                             'default': function(val, type) {
                                 return isObject(val) && val.serialize ? val.serialize() : val;
@@ -110,7 +112,7 @@
         can.Map.prototype.__convert = function(prop, value) {
             // check if there is a
             var Class = this.constructor,
-                oldVal = this.attr(prop),
+                oldVal = this.__get(prop),
                 type, converter;
             if (Class.attributes) {
                 // the type of the attribute
@@ -120,46 +122,34 @@
             return value === null || !type ? value : converter.call(Class, value, oldVal, function() {}, type);
         };
 
-        can.List.prototype.serialize = function(attrName, stack) {
-            return can.makeArray(can.Map.prototype.serialize.apply(this, arguments));
+        var oldSerialize = can.Map.helpers._serialize;
+        can.Map.helpers._serialize = function(map, name, val) {
+
+            var constructor = map.constructor,
+                type = constructor.attributes ? constructor.attributes[name] : 0,
+                converter = constructor.serialize ? constructor.serialize[type] : 0;
+
+            return val && typeof val.serialize === 'function' ?
+            // call attrs or serialize to get the original data back
+            oldSerialize.apply(this, arguments) :
+            // otherwise if we have  a converter
+            converter ?
+            // use the converter
+            converter(val, type) :
+            // or return the val
+            oldSerialize.apply(this, arguments);
         };
-        can.Map.prototype.serialize = function(attrName, stack) {
-            var where = {}, Class = this.constructor,
-                attrs = {};
-            stack = can.isArray(stack) ? stack : [];
-            stack.push(this._cid);
-            if (attrName !== undefined) {
-                attrs[attrName] = this[attrName];
+        // add support for single value serialize
+        var mapSerialize = can.Map.prototype.serialize;
+        can.Map.prototype.serialize = function(attrName) {
+            var baseResult = mapSerialize.apply(this, arguments);
+            if (attrName) {
+                return baseResult[attrName];
             } else {
-                attrs = this.__get();
+                return baseResult;
             }
-            can.each(attrs, function(val, name) {
-                var type, converter;
-                // If this is an observe, check that it wasn't serialized earlier in the stack.
-                if (val instanceof can.Map && can.inArray(val._cid, stack) > -1) {
-                    // Since this object has already been serialized once,
-                    // just reference the id (or undefined if it doesn't exist).
-                    where[name] = val.attr('id');
-                } else {
-                    type = Class.attributes ? Class.attributes[name] : 0;
-                    converter = Class.serialize ? Class.serialize[type] : 0;
-                    // if the value is an object, and has a attrs or serialize function
-                    where[name] = val && typeof val.serialize === 'function' ?
-                    // call attrs or serialize to get the original data back
-                    val.serialize(undefined, stack) :
-                    // otherwise if we have  a converter
-                    converter ?
-                    // use the converter
-                    converter(val, type) :
-                    // or return the val
-                    val;
-                }
-            });
-            if (typeof attrs.length !== 'undefined') {
-                where.length = attrs.length;
-            }
-            return attrName !== undefined ? where[attrName] : where;
         };
+
         return can.Map;
     })(window.can, undefined, undefined);
 

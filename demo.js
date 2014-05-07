@@ -1,3 +1,14 @@
+require.config({
+    paths : {
+        "jquery" : "bower_components/jquery/dist/jquery",
+        "can": "bower_components/canjs/amd/can"
+    }
+});
+require(['mycontrol/mycontrol.js'], function(myControl){
+
+    new myControl('#demo');
+
+})
 (function($, can, undefined) {
 	var MapUtils = {
 		latLng: function(lat, lng) {
