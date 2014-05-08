@@ -1,17 +1,35 @@
 require.config({
-    paths : {
-        'jquery' : 'bower_components/jquery/dist/jquery',
-        'can': 'bower_components/canjs/amd/can',
-        'async': 'bower_components/requirejs-plugins/src/async'
-    }
+	baseUrl: '/',
+	paths : {
+		'jquery' : 'bower_components/jquery/dist/jquery',
+		'can': 'bower_components/canjs/amd/can',
+		'gmap': 'google/map',
+		'maputils': 'google/utils',
+		'markerwithlabel': 'google/markerwithlabel',
+		'async': 'bower_components/requirejs-plugins/src/async',
+		'text': 'bower_components/requirejs-text/text',
+		'css': 'bower_components/require-css/css'
+	},
+	shim: {
+		'markerwithlabel': ['gmap']
+	}
 });
 
-require(['mycontrol/mycontrol.js'], function(myControl){
+//CC: stache!, ejs! and mustache! plugins are being developed so we don't have to use text! then run can.stache
+require(['can', 'text!app/index.stache', 'app/models/appstate', 'app/map/map', 'can/view/stache', 'app/models/fixture'], function(can, indexTemplate, AppState){
 
-    new myControl('#demo');
+	$(function(){
+
+		var appState = window.appState = new AppState();
+
+		var indexView = can.stache(indexTemplate);
+
+		$('#app').html(indexView(appState));
+
+	});
 
 });
-
+/*
 (function($, can, undefined) {
 	var MapUtils = {
 		latLng: function(lat, lng) {
@@ -286,3 +304,4 @@ require(['mycontrol/mycontrol.js'], function(myControl){
 	$('#demo').html(can.view('app', {}));
 
 }(jQuery, can));
+*/
