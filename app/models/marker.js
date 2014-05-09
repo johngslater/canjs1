@@ -1,44 +1,42 @@
-define(['can/model', 'maputils', 'markerwithlabel', 'can/construct/super'], function(Model, MapUtils){
+define(['can/model', 'maputils', 'markerwithlabel', 'can/map/define', 'can/construct/super', './fixture'], function(Model, MapUtils){
+
 	return can.Model.extend({
 		findAll: 'GET /markers',
 		findOne: 'GET /markers/{id}',
 		create: 'POST /markers',
 		update: 'PUT /markers/{id}',
 		destroy: 'DELETE /markers/{id}',
-		//http://canjs.com/docs/can.Map.attributes.html
-		attributes: {
-			'latLng': 'latlng',
-			'marker': 'marker'
-		},
-		convert: {
-			latlng: function(raw){
-				if(!can.isArray(raw)){
-					return raw;
-				} else {
-					return MapUtils.latLng(raw);
+		model: function(data) {
+			return can.extend(data, {
+				marker: {
+					draggable: true,
+					icon: 'green-dot.png',
+					title: data.name,
+					labelContent: data.name,
+					position: MapUtils.latLng(data.latLng)
 				}
-			}
-		},
-		serialize: {
-			latlng: function(val) {
-				return [val.ob, val.pb]
-			},
-			marker: function(val) {
-				return null;
-			}
+			});
 		}
 	}, {
-		setup: function(data){
-			// Create a Map Marker
-			data.marker = new MarkerWithLabel({
-				draggable: true,
-				icon: 'green-dot.png',
-				title: data.name,
-				labelContent: data.name,
-				position: MapUtils.latLng(data.latLng)
-			});
-			//Needs can/construct/super
-			this._super(data);
+		define: {
+			marker: {
+				type: function(newVal) {
+					return new MarkerWithLabel(newVal);
+				},
+				serialize: false
+			},
+			latLng: {
+				type: function(newVal) {
+					if(!can.isArray(newVal)){
+						return newVal;
+					} else {
+						return MapUtils.latLng(newVal);
+					}
+				},
+				serialize: function(currentValue){
+					return [val.ob, val.pb];
+				}
+			}
 		},
 		bindMapEvents: function(list) {
 			this.mapEvents = [];
