@@ -16,15 +16,57 @@ require.config({
 });
 
 //CC: stache!, ejs! and mustache! plugins are being developed so we don't have to use text! then run can.stache
-require(['can', 'text!app/index.stache', 'app/models/appstate', 'app/map/map', 'can/view/stache', 'app/models/fixture'], function(can, indexTemplate, AppState){
+require(['can', 'text!app/index.stache', 'app/models/appstate', 'can/view/stache', 'css!app/app.css'], function(can, indexTemplate, AppState){
 
 	$(function(){
 
 		var appState = window.appState = new AppState();
+		var rendered = {
+			'map': false,
+			'marker': false
+		}
 
 		var indexView = can.stache(indexTemplate);
+		var mapScreenView = can.stache('<map-screen selected="{activeMarker}"></map-screen>');
+		var markerScreenView = can.stache('<marker-screen marker="{activeMarker}"></marker-screen>');
+
+		//Change screens when appState updates
+		appState.bind('screen', function(ev, newScreen){
+
+			if(newScreen === 'map') {
+				if(rendered[newScreen]) {
+					$('map-screen').removeClass('hide');
+				} else {
+					require(['app/mapscreen/mapscreen'], function(){
+
+						$('#content').append(mapScreenView(appState));
+
+					});
+				}
+				$('marker-screen').addClass('hide');
+			}
+
+			if(newScreen === 'marker') {
+
+				if(rendered[newScreen]) {
+					$('marker-screen').removeClass('hide');
+				} else {
+					require(['app/markerscreen/markerscreen'], function(){
+
+						$('#content').append(markerScreenView(appState));
+
+					});
+				}
+				$('map-screen').addClass('hide');
+
+			}
+			rendered[newScreen] = true;
+
+		});
 
 		$('#app').html(indexView(appState));
+
+		appState.attr('screen', 'map');
 
 	});
 

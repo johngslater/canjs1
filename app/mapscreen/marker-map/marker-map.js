@@ -1,11 +1,11 @@
-define(['can/component', 'app/models/marker', 'gmap', 'maputils', 'css!./map.css'], function(Component, MarkerModel, Map, MapUtils){
+define(['can/component', 'app/models/marker', 'gmap', 'maputils', 'css!./marker-map.css'], function(Component, MarkerModel, Map, MapUtils){
 
 	var viewModel = can.Map.extend({
 		center: MapUtils.latLng(36.913812,  -121.827072),
 		zoom: 16,
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 		map: null,
-		markers: new MarkerModel.List(),
+		markers: new MarkerModel.List({}),
 		getMapOptions: function() {
 			return {
 				center: this.attr('center'),
@@ -23,18 +23,16 @@ define(['can/component', 'app/models/marker', 'gmap', 'maputils', 'css!./map.css
 	});
 
 	can.Component.extend({
-		tag: 'map',
-		template: '<div class="map"></div>',
+		tag: 'marker-map',
+		template: '<div class="marker-map"></div>',
 		scope: viewModel,
 		events: {
 			'inserted': function(){
 				var self = this;
 				this.element.width(Math.min($('body').width(), 300));
 
-				this.scope.attr('map', new google.maps.Map(this.element.find('.map')[0], this.scope.getMapOptions()));
-				window.def = MarkerModel.findAll({});
-				this.scope.markers.replace(def);
-				MarkerModel.findAll({}).fail(function(){console.log(arguments)})
+				this.scope.attr('map', new google.maps.Map(this.element.find('.marker-map')[0], this.scope.getMapOptions()));
+				//TODO: Rebind and call show
 			},
 			'{MarkerModel} created': function(Marker, ev, newMarker) {
 				this.scope.markers.push(newMarker);
@@ -55,15 +53,15 @@ define(['can/component', 'app/models/marker', 'gmap', 'maputils', 'css!./map.css
 				});
 			},
 			'{scope.markers} click': function(markers, ev, mapEv, marker) {
-				clientState.attr('selected', marker);
-				clientState.attr('editing', marker);
+				appState.attr('activeMarker', marker);
+				appState.attr('screen', 'marker');
 			},
 			'{scope.markers} dragstart': function(markers, ev, mapEv, marker) {
-				marker.attr('moves', marker.attr('moves') + 1)
-				clientState.attr('selected', marker);
+				marker.attr('moves', marker.attr('moves') + 1);
+				appState.attr('activeMarker', marker);
 			},
 			'{scope.markers} drag': function(markers, ev, mapEv, marker) {
-				marker.attr('latLng', [mapEv.latLng.lat(), mapEv.latLng.lng()])
+				marker.attr('latLng', [mapEv.latLng.lat(), mapEv.latLng.lng()]);
 			}
 		}
 	});
