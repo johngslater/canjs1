@@ -1,4 +1,4 @@
-define(['can/component', './marker-map/marker-map', 'text!./mapscreen.stache'], function(Component, MapViewModel, template){
+define(['can/component', 'app/mapscreen/marker-map/marker-map', 'text!app/mapscreen/mapscreen.stache', 'can/view/stache'], function(Component, MapViewModel, template){
 
     var viewModel = function(attrs, parentScope, element){
         return {

@@ -1,7 +1,7 @@
 require.config({
 	baseUrl: '/',
 	paths : {
-		'jquery' : 'bower_components/jquery/dist/jquery',
+		'jquery' : 'bower_components/jquery/jquery',
 		'can': 'bower_components/canjs/amd/can',
 		'gmap': 'google/map',
 		'maputils': 'google/utils',
@@ -14,6 +14,16 @@ require.config({
 		'markerwithlabel': ['gmap']
 	}
 });
+
+/*
+  require(['can', 'can/view/stache', 'app/models/appstate'], function(can, stache, appState){
+    can === stache //->
+  })
+
+  Always require plugins at the end of your dependency list
+  require(['can', 'app/models/appstate', 'can/view/stache'], function(can, appState){
+  })
+*/
 
 //CC: stache!, ejs! and mustache! plugins are being developed so we don't have to use text! then run can.stache
 require(['can', 'text!app/index.stache', 'app/models/appstate', 'can/view/stache', 'app/mapscreen/mapscreen', 'app/markerscreen/markerscreen', 'css!app/app.css'], function(can, indexTemplate, AppState){
