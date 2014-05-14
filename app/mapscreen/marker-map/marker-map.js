@@ -54,7 +54,7 @@ define(['can/component', 'app/models/marker', 'gmap', 'maputils', 'css!./marker-
 			},
 			'{scope.markers} click': function(markers, ev, mapEv, marker) {
 				appState.attr('activeMarker', marker);
-				appState.attr('screen', 'marker');
+				appState.attr('editing', true);
 			},
 			'{scope.markers} dragstart': function(markers, ev, mapEv, marker) {
 				marker.attr('moves', marker.attr('moves') + 1);

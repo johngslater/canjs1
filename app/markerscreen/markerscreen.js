@@ -2,7 +2,7 @@ define(['can/component', 'text!./markerscreen.stache'], function(Component, temp
 
 	var viewModel = {
         goBack: function() {
-            appState.attr('screen', 'map');
+            appState.attr('editing', false);
         }
     };
 
