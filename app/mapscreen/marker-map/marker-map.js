@@ -1,4 +1,4 @@
-define(['can/component', 'app/models/marker', 'gmap', 'maputils', 'css!./marker-map.css'], function(Component, MarkerModel, Map, MapUtils){
+define(['can/component', 'app/models/marker', 'gmap', 'maputils', 'css!app/mapscreen/marker-map/marker-map.css'], function(Component, MarkerModel, Map, MapUtils){
 
 	var viewModel = can.Map.extend({
 		center: MapUtils.latLng(36.913812,  -121.827072),
