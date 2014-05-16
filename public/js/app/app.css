@@ -1,0 +1,6 @@
+.screen {
+	display: none;
+}
+.screen.active {
+	display: block;
+}
