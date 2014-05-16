@@ -18,6 +18,7 @@ define([
 		},
 		teardown: function() {
 			$('#qunit-test-area').empty();
+			appState.attr({}, true);
 		}
 	});
 
