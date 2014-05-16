@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Marker Map Tests</title>
+		<link rel="stylesheet" href="/js/lib/qunit/qunit/qunit.css"/>
+		<script data-main="/js/app/test/require_config" src="/js/lib/requirejs/require.js"></script>
+		<script src="/js/lib/qunit/qunit/qunit.js"></script>
+		<script>
+			//From https://github.com/jrburke/requirejs/wiki/Test-frameworks
+			QUnit.config.autostart = false;
+			window.addEventListener('load', function onLoad(){
+				setTimeout(function(){
+					require(['./marker-map_test.js'], function(){
+     					QUnit.load();
+     					QUnit.start();
+					})
+				}, 10);
+				window.removeEventListener("load", onLoad, true);
+			}, true);
+		</script>
+	</head>
+	<body>
+		<div id="qunit"></div>
+		<div id="qunit-test-area"></div>
+	</body>
+</html>
