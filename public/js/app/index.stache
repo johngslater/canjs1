@@ -2,4 +2,4 @@
 	<h1>gthrive App</h1>
 </header>
 
-<div id="content" style="width:200px; height:200px"></div>
+<div id="content" style="width:600px; height:600px"></div>

@@ -17,7 +17,7 @@ define([
 	'can/view/stache',
 	'app/map-screen/map-screen',
 	'app/marker-screen/marker-screen',
-	//TODO: Remove this for production builds
+	//TODO: Remove these for production builds
 	//TODO: look into excluding module ids in r.js
 	'app/fixtures/marker',
 	'app/fixtures/farm',
@@ -30,17 +30,18 @@ define([
 	$(function(){
 
 		appState.attr({
-			editing: false
+			editing: false,
+			farmId: 1
 		});
 		var indexView = can.stache(indexTemplate);
 		var screens = [{
-			template: can.stache('<gt-map-screen class="screen {{#if isActive}}active{{/if}}" selected="{appState.activeMarker}"></gt-map-screen>'),
+			template: can.stache('<gt-map-screen class="screen {{#if isActive}}active{{/if}}" selected="{appState.activeMarker}" farm-id="{appState.farmId}"></gt-map-screen>'),
 			isActive: function(){
 				return appState.attr('editing') === false;
 			}
 		},
 		{
-			template: can.stache('<gt-marker-screen class="screen {{#if isActive}}active{{/if}}" marker="{appState.activeMarker}"></gt-marker-screen>'),
+			template: can.stache('<gt-marker-screen class="screen {{#if isActive}}active{{/if}}" marker="{appState.activeMarker}" farm-id="{appState.farmId}"></gt-marker-screen>'),
 			isActive: function(){
 				return appState.attr('editing') === true;
 			}
