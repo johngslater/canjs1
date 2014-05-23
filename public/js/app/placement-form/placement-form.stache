@@ -1,0 +1,6 @@
+{{#placement}}
+	<strong>Name:</strong> {{#if editable}}<input type="text" can-value="placement.display_name">{{else}}{{placement.display_name}}{{/if}}<br>
+	<strong>Moves:</strong> {{placement.moves}}<br>
+	<strong>Lat:</strong> {{placement.latitude}}<br>
+	<strong>Lng:</strong> {{placement.longitude}}<br>
+{{/placement}}
