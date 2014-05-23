@@ -1,0 +1,2 @@
+<h2>Graph</h2>
+<button class="back" can-click="goBack">Back</button>
