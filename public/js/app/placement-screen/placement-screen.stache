@@ -1,8 +1,5 @@
-{{#placement}}
-	<strong>Name:</strong> <input type="text" can-value="placement.display_name"><br>
-	<strong>Moves:</strong> {{placement.moves}}<br>
-	<strong>Lat:</strong> {{placement.latitude}}<br>
-	<strong>Lng:</strong> {{placement.longitude}}<br>
-{{/placement}}
+{{#if ./placement}}
+	<gt-placement-form placement={placement}></gt-placement-form>
+{{/if}}
 <hr>
 <button class="back" can-click="goBack">Back</button>

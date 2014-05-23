@@ -4,6 +4,7 @@ define([
     'app/models/appstate',
     'app/models/farm',
     'app/map/map',
+    'app/placement-form/placement-form',
     'text!./map-screen.stache',
     'can/view/stache'
 ], function(require, Component, appState, FarmModel, MarkerMapViewModel){

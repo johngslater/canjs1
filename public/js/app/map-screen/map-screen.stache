@@ -1,8 +1,5 @@
 <h2>{{./farm.name}}</h2>
 <gt-map farm="{farm}"></gt-map>
-{{#selected}}
-	<strong>Name:</strong> {{selected.display_name}}<br>
-	<strong>Moves:</strong> {{selected.moves}}<br>
-	<strong>Lat:</strong> {{selected.latitude}}<br>
-	<strong>Lng:</strong> {{selected.longitude}}
-{{/selected}}
+{{#if ./selected}}
+	<gt-placement-form editable=false placement={selected}></gt-placement-form>
+{{/if}}

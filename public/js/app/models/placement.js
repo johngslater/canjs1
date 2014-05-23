@@ -10,7 +10,8 @@ define([
 
 	var Placement = Map.extend({
 		setup: function(attrs){
-			console.log(attrs);
+			//http://canjs.com/docs/can.Construct.super.html
+			//calls can.Map.prototype.setup
 			this._super(can.extend(attrs, {
 				marker: new MarkerWithLabel({
 					draggable: true,
@@ -33,6 +34,7 @@ define([
 			this.mapEvents.push(google.maps.event.addListener(marker, 'click', $.proxy(this.dispatchEvent, this, 'click', list)));
 			this.mapEvents.push(google.maps.event.addListener(marker, 'dragstart', $.proxy(this.dispatchEvent, this, 'dragstart', list)));
 			this.mapEvents.push(google.maps.event.addListener(marker, 'drag', $.proxy(this.dispatchEvent, this, 'drag', list)));
+
 			this.bind('display_name', function(ev, newVal){
 				marker.set('title', newVal);
 				marker.set('labelContent', newVal);

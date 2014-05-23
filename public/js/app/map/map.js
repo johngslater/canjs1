@@ -1,12 +1,11 @@
 define([
 	'can/component',
     'app/models/appstate',
-	'app/models/marker',
 	'googlemap',
 	'maputil',
 	'can/map/define',
 	'css!./map.css'
-], function(Component, appState, MarkerModel, Map, MapUtils){
+], function(Component, appState, Map, MapUtils){
 	'use strict';
 
 	var viewModel = can.Map.extend({

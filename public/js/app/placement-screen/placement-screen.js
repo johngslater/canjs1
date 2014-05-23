@@ -2,6 +2,7 @@ define([
     'require',
     'can/component',
     'app/models/appstate',
+    'app/placement-form/placement-form',
     'text!./placement-screen.stache',
     'can/view/stache'
 ], function(require, Component, appState){
@@ -18,15 +19,7 @@ define([
     Component.extend({
         tag: 'gt-placement-screen',
         template: can.stache(template),
-        scope: ViewModel,
-        events: {
-            'input change': function(el, ev){
-                // var placement = this.scope.attr('placement');
-                // placement.attr('display_name');
-                // placement.marker.set('name', el.val());
-                // placement.marker.set('labelContent', el.val());
-            }
-        }
+        scope: ViewModel
     });
 
     return ViewModel;

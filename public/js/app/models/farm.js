@@ -21,6 +21,7 @@ define([
 			return new Farm(parsed);
 		}
 	}, {
+		//http://canjs.com/docs/can.Map.prototype.define.html
 		define: {
 			placements: {
 				Type: Placement.List
