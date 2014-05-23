@@ -2,12 +2,12 @@ define([
     'require',
     'can/component',
     'app/models/appstate',
-    'text!./marker-screen.stache',
+    'text!./placement-screen.stache',
     'can/view/stache'
 ], function(require, Component, appState){
     'use strict';
 
-    var template = require('text!./marker-screen.stache');
+    var template = require('text!./placement-screen.stache');
 
 	var ViewModel = {
         goBack: function() {
@@ -16,15 +16,15 @@ define([
     };
 
     Component.extend({
-        tag: 'gt-marker-screen',
+        tag: 'gt-placement-screen',
         template: can.stache(template),
         scope: ViewModel,
         events: {
             'input change': function(el, ev){
-                var marker = this.scope.attr('marker');
-                marker.attr('name');
-                marker.marker.set('name', el.val());
-                marker.marker.set('labelContent', el.val());
+                // var placement = this.scope.attr('placement');
+                // placement.attr('display_name');
+                // placement.marker.set('name', el.val());
+                // placement.marker.set('labelContent', el.val());
             }
         }
     });

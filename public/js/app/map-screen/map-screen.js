@@ -3,7 +3,7 @@ define([
     'can/component',
     'app/models/appstate',
     'app/models/farm',
-    'app/marker-map/marker-map',
+    'app/map/map',
     'text!./map-screen.stache',
     'can/view/stache'
 ], function(require, Component, appState, FarmModel, MarkerMapViewModel){
@@ -25,10 +25,7 @@ define([
                     farm: farm
                 });
             });
-        },
-        marker: can.compute(function(){
-            return appState.attr('activeMarker');
-        })
+        }
     });
 
     Component.extend({

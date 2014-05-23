@@ -10,22 +10,33 @@ define([
 
 	var Placement = Map.extend({
 		setup: function(attrs){
+			console.log(attrs);
 			this._super(can.extend(attrs, {
 				marker: new MarkerWithLabel({
 					draggable: true,
 					icon: '/img/green-dot.png',
 					title: attrs.display_name,
 					labelContent: attrs.display_name,
-					position: MapUtils.latLng(attrs.latitude, attrs.longitiude)
+					position: MapUtils.latLng(attrs.latitude, attrs.longitude)
 				})
 			}));
 		},
+		define: {
+			moves: {
+				value: 0
+			}
+		},
 		bindMapEvents: function(list) {
+			var marker = this.marker;
 			this.mapEvents = [];
 			// http://api.jquery.com/jQuery.proxy/
-			this.mapEvents.push(google.maps.event.addListener(this.marker, 'click', $.proxy(this.forwardEvent, this, 'click', list)));
-			this.mapEvents.push(google.maps.event.addListener(this.marker, 'dragstart', $.proxy(this.forwardEvent, this, 'dragstart', list)));
-			this.mapEvents.push(google.maps.event.addListener(this.marker, 'drag', $.proxy(this.forwardEvent, this, 'drag', list)));
+			this.mapEvents.push(google.maps.event.addListener(marker, 'click', $.proxy(this.dispatchEvent, this, 'click', list)));
+			this.mapEvents.push(google.maps.event.addListener(marker, 'dragstart', $.proxy(this.dispatchEvent, this, 'dragstart', list)));
+			this.mapEvents.push(google.maps.event.addListener(marker, 'drag', $.proxy(this.dispatchEvent, this, 'drag', list)));
+			this.bind('display_name', function(ev, newVal){
+				marker.set('title', newVal);
+				marker.set('labelContent', newVal);
+			});
 		},
 		unbindMapEvents: function() {
 			can.each(this.mapEvents, function(ev) {
@@ -33,9 +44,8 @@ define([
 			});
 			this.mapEvents = [];
 		},
-		forwardEvent: function(type, list, ev) {
-			//this triggers events on the Marker.List instance (list)
-			can.trigger(list, type, [ev, this]);
+		dispatchEvent: function(type, list, ev) {
+			can.event.dispatch.call(list, type, [ev, this]);
 		},
 		show: function(map) {
 			this.marker.setMap(map);
@@ -47,18 +57,12 @@ define([
 			this.hide();
 			this.marker = null;
 		}
-		// lat: function() {
-		// 	// return this.attr('marker.latLng').ob;
-		// },
-		// lng: function() {
-		// 	// return this.attr('marker.latLng').pb;
-		// }
 	});
 
-	var List = List.extend({
+	Placement.List.extend({
 		//http://canjs.com/docs/can.List.Map.html
 		Map: Placement
 	}, {});
 
-	return List;
+	return Placement;
 });
