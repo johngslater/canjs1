@@ -2,25 +2,21 @@ define([
     'require',
     'can/component',
     'app/models/appstate',
-    'app/placement-form/placement-form',
-    'text!./placement-screen.stache',
+    'text!./graph-screen.stache',
     'can/view/stache'
 ], function(require, Component, appState){
     'use strict';
 
-    var template = require('text!./placement-screen.stache');
+    var template = require('text!./graph-screen.stache');
 
 	var ViewModel = {
         goBack: function() {
-            appState.attr('editing', false);
-        },
-        gotoGraph: function() {
-            appState.attr('showGraph', true);
+            appState.attr('showGraph', false);
         }
     };
 
     Component.extend({
-        tag: 'gt-placement-screen',
+        tag: 'gt-graph-screen',
         template: can.stache(template),
         scope: ViewModel
     });
