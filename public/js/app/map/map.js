@@ -91,7 +91,8 @@ define([
 			},
 			'{scope.farm.placements} click': function(markers, ev, mapEv, placement) {
 				appState.attr('activePlacement', placement);
-				appState.attr('editing', true);
+				appState.attr('placementId', placement.id);
+				appState.attr('screen', 'placement');
 			},
 			'{scope.farm.placements} dragstart': function(markers, ev, mapEv, placement) {
 				placement.attr('moves', placement.attr('moves') + 1);

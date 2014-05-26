@@ -1,6 +1,4 @@
-{{#if ./placement}}
+<!-- Look into how to fix this {{#if ./placement}} -->
 	<gt-placement-form placement={placement}></gt-placement-form>
-{{/if}}
+<!-- {{/if}} -->
 <hr>
-<button class="back" can-click="goBack">Back</button>
-<button class="back" can-click="gotoGraph">Graphs</button>

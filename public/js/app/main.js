@@ -30,37 +30,47 @@ define([
 	$(function(){
 
 		appState.attr({
-			editing: false,
-			showGraph: false,
 			farmId: 1
 		});
+
+		//http://canjs.com/docs/can.route.map.html
+		can.route.map(appState);
+
+		can.route('', {
+			'screen': 'map'
+		});
+
+		can.route('map/:farmId', {
+			'screen': 'map'
+		});
+
+		can.route('placement/:farmId/:placementId', {
+			'screen': 'placement'
+		});
+
+		can.route('graph/:farmId/:placementId', {
+			'screen': 'graph'
+		});
+
 		var indexView = can.stache(indexTemplate);
 		var screens = [{
-			template: can.stache('<gt-map-screen class="screen {{#if isActive}}active{{/if}}" selected="{appState.activePlacement}" farm-id="{appState.farmId}"></gt-map-screen>'),
-			isActive: function(){
-				return appState.attr('editing') === false;
-			}
+			template: can.stache('<gt-map-screen class="screen {{#if showMap}}active{{/if}}" selected="{activePlacement}" farm-id="{farmId}"></gt-map-screen>')
 		},
 		{
-			template: can.stache('<gt-placement-screen class="screen {{#if isActive}}active{{/if}}" placement="{appState.activePlacement}" farm-id="{appState.farmId}"></gt-placement-screen>'),
-			isActive: function(){
-				return appState.attr('editing') === true && appState.attr('showGraph') === false;
-			}
+			template: can.stache('<gt-placement-screen class="screen {{#if showPlacement}}active{{/if}}" placement="{activePlacement}" farm-id="{farmId}"></gt-placement-screen>')
 		},
 		{
-			template: can.stache('<gt-graph-screen class="screen {{#if isActive}}active{{/if}}"></gt-placement-screen>'),
-			isActive: function(){
-				return appState.attr('editing') === true && appState.attr('showGraph') === true;
-			}
+			template: can.stache('<gt-graph-screen class="screen {{#if showGraph}}active{{/if}}"></gt-placement-screen>')
 		}];
 
 		$('#app').append(can.stache(indexTemplate)(appState));
 
+		console.log('ready');
+
+		can.route.ready();
+
 		can.each(screens, function(screen){
-			$('#content').append(screen.template({
-				appState: appState,
-				isActive: screen.isActive
-			}));
+			$('#content').append(screen.template(appState));
 		});
 
 	});
