@@ -25,6 +25,8 @@ define([
                 self.attr({
                     farm: farm
                 });
+                //TODO: Clean this up
+                appState.attr('activeFarm', farm);
             });
         }
     });

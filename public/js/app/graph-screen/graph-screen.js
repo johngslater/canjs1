@@ -8,12 +8,7 @@ define([
     'use strict';
 
     var template = require('text!./graph-screen.stache');
-
-	var ViewModel = {
-        goBack: function() {
-            appState.attr('showGraph', false);
-        }
-    };
+	var ViewModel = {};
 
     Component.extend({
         tag: 'gt-graph-screen',

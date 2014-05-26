@@ -26,6 +26,17 @@ define([
 			placements: {
 				Type: Placement.List
 			}
+		},
+		getPlacement: function(id) {
+			var found;
+			var needle = +id;
+			this.attr('placements').each(function(placement){
+				if(placement.id === needle) {
+					found = placement;
+					return false;
+				}
+			});
+			return found;
 		}
 	});
 
