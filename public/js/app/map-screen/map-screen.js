@@ -14,21 +14,6 @@ define([
 
     var viewModel = can.Map.extend({
         farmId: null,
-        updateFarm: function(){
-            var self = this;
-            var id = this.attr('farmId');
-            if(!id) {
-                return;
-            }
-
-            FarmModel.findOne({id: id}).then(function(farm){
-                self.attr({
-                    farm: farm
-                });
-                //TODO: Clean this up
-                appState.attr('activeFarm', farm);
-            });
-        }
     });
 
     Component.extend({
@@ -37,10 +22,6 @@ define([
         scope: viewModel,
         events: {
             'inserted': function() {
-                this.scope.updateFarm();
-            },
-            '{scope} farmId': function() {
-                this.scope.updateFarm();
             }
         }
     });
