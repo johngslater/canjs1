@@ -1,0 +1,3 @@
+dont put tag gt-graph in this file
+
+<canvas id='myCanvas' width='300' height='350'>a plot goes here</canvas>

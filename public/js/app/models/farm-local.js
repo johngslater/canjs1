@@ -31,6 +31,7 @@ define([
 					dataType: 'json'
 				});
 				request.then(function(data){
+          console.log(data)
 					this.storage.loadData(data);
 					def.resolve(lookup());
 				});

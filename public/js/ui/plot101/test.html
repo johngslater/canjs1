@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>test plotting</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<style>
+</style>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="plot101.js"></script>
+<script>
+$(document).ready(function(){
+    var config={ canvasId:'myCanvas',
+ //     minX: 0, minY: -10, maxX:7*3600*24, maxY:10, unitsPerTick:1
+      minX: -10, minY: -10, maxX:10, maxY:10, unitsPerTick:1
+    };
+
+    var myGraph= Graph(config);
+
+//    myGraph.drawEquation(function(x) { return 5*Math.sin(3600*24/(2*Math.PI)); },'green',3);
+    var eqn=function(x){ return 5*Math.sin(x)+1.1*Math.sin(6*x)+0.8*Math.random(); };
+ //   myGraph.drawEquation(eqn,'green',3);
+
+    var pts=[];
+    for(var i=0; i<200; i++){
+      var x=(config.maxX-config.minX)*(i/200)+config.minX;
+      pts.push([x,eqn(x)]);
+    }
+
+    myGraph.drawPoints(pts,'black',3);
+
+    myGraph.drawEquation(function(x){ return x*x;           },'blue' ,3);
+    myGraph.drawEquation(function(x){ return 1*x;           },'red'  ,3);
+
+});
+</script>
+</head>
+<body>
+<canvas id='myCanvas' width='300' height='350'></canvas>
+</body>
+</html>

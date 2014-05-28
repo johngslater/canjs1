@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>test plotting</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- from http://stackoverflow.com/questions/10485039/simple-example-for-using-require-js-->
+<script src="../../lib/requirejs/require.js"></script>
+<script>
+    // https://github.com/requirejs/example-jquery-cdn
+    require.config({
+        baseUrl: '../../lib',
+        "paths": {
+          "jquery": "jquery/jquery"
+        }
+    });
+
+
+    // trying http://www.bennadel.com/blog/2287-using-jquery-as-a-named-module-in-requirejs.htm
+//   require(
+//       [
+//           "jquery"
+//       ],
+//       function(jQ){
+//           alert('jQ has been loaded');
+//           $('#icons').html('bar');  // this works
+//           // Log the callback parameter. JGS: WTF does this mean?
+//           console.log( "$164.fn.jquery:", jQ);
+//           console.log(  jQ);
+//
+//       }
+//   );
+
+</script>
+<script>
+//    var icon_render = {   // todo: kludge, repeats code from senseIconsView.js
+//      lt_lumen  :  {render: function (parent) { sun_draw(parent, F); }}, // F -> dont draw ground  // kludge for Joop
+//      at_celsius: {render: function (parent) { thermometer_draw(parent, F); }},
+//      st_celsius: {render: function (parent) { thermometer_draw(parent, T); }},
+//      syn_sm_vwc: {render: function (parent) { drop_draw(parent, T); }},
+//      syn_ec_dsm: {render: function (parent) { elec_draw(parent, T); }}
+//    };
+
+    require(['jquery', './senseIcons.js'], function ($, senseIcons) {
+
+      //  var jQ=require("http://code.jquery.com/jquery.js");
+
+      // http://www.bennadel.com/blog/2287-using-jquery-as-a-named-module-in-requirejs.htm
+
+      var newCnvs=function(){return $('<canvas>').attr({ width:'45', height:'45' }); };
+
+      var cnvs=newCnvs();
+      senseIcons.sun(cnvs[0],true);
+      $('#icons').append(cnvs);
+      var cnvs=newCnvs();
+      senseIcons.thermometer(cnvs[0],true);
+      $('#icons').append(cnvs);
+      var cnvs=newCnvs();
+      senseIcons.thermometer(cnvs[0],false);
+      $('#icons').append(cnvs);
+      var cnvs=newCnvs();
+      senseIcons.drop(cnvs[0],true);
+      $('#icons').append(cnvs);
+      var cnvs=newCnvs();
+      senseIcons.elec(cnvs[0],true);
+      $('#icons').append(cnvs);
+
+   //   icon_draw(cnvs,_sense,reading);
+    });
+</script>
+</head>
+<body>
+<div id='icons'>the icons are drawn here</div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 define([
 	'can/component',
-    'app/models/appstate',
+  'app/models/appstate',
 	'googlemap',
 	'maputil',
 	'can/map/define',
@@ -56,7 +56,7 @@ define([
 		template: '<div class="map"></div>',
 		scope: viewModel,
 		events: {
-			'inserted': function(){
+			'inserted': function(){  ;
 			},
 			'{scope.farm.placements} remove': function(Scope, ev, added) {
 				//TODO: Cleanup map events and remove from map

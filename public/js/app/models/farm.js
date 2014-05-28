@@ -8,7 +8,8 @@ define([
 	var Farm = can.Model.extend({
 		findOne: 'GET /gauges',
 		//BUG: parseModel calls model which calls parseModel again!?
-		model: function(data, xhr) {
+		model: function(gauges, xhr) {
+      var data=gauges.configuration;
 			var parsed = {
 				name: data.farm_name,
 				lat: +data.farm_latitude,
