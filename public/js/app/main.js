@@ -13,6 +13,7 @@ define([
 	'require',
 	'can',
 	'app/models/appstate',
+	'app/models/gauges',
 	'text!./index.stache',
 	'can/view/stache',
 	'app/map-screen/map-screen',
@@ -22,8 +23,9 @@ define([
 	//TODO: look into excluding module ids in r.js
 	'app/fixtures/farm',
 	'css!./app.css'
-], function(require, can, appState){
+], function(require, can, appState, Gauges){
 	'use strict';
+	window.Gauges = Gauges;
 
 	var indexTemplate = require('text!./index.stache');
 
