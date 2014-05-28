@@ -1,7 +1,8 @@
 define([
 	'can/map',
+    'app/models/farm',
 	'can/map/define'
-], function(Map){
+], function(Map, FarmModel){
 	'use strict';
 
 	var AppState = Map.extend({
@@ -13,7 +14,31 @@ define([
 			},
 			farmId: {
 				type: 'number',
-				value: null
+				set: function(newId) {
+					var self = this;
+					if(this.attr('farmId') !== newId) {
+						FarmModel.findOne({id: newId}).then(function(farm){
+							self.attr('farm', farm);
+						});
+					}
+					return newId;
+				}
+			},
+			placementId: {
+				type: 'number',
+				set: function(newId) {
+					var self = this;
+					var farm = this.attr('farm');
+					if(!farm) {
+						FarmModel.findOne({id: newId}).then(function(farm){
+			                self.attr('farm', farm);
+			                self.attr('placement', farm.getPlacement(newId));
+			            });
+					} else {
+						this.attr('placement', farm.getPlacement(newId));
+					}
+					return newId;
+				}
 			},
 			showMap: {
 				get: function(){
@@ -30,10 +55,12 @@ define([
 					return this.attr('screen') === 'graph';
 				}
 			},
-			activePlacement: {
+			//Objects stored in appState should not serialize
+			//if they do, at the most you want an id or some other identifier
+			farm: {
 				serialize: false
 			},
-			activeFarm: {
+			placement: {
 				serialize: false
 			}
 		}

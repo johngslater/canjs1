@@ -58,19 +58,17 @@ define([
 		events: {
 			'inserted': function(){
 			},
-			// '{scope.farm.placements} add': function(Scope, ev, changed, index) {
-			// 	console.log('add', arguments);
-			// 	this.scope.addMarker(placement);
-			// },
 			'{scope.farm.placements} remove': function(Scope, ev, added) {
+				//TODO: Cleanup map events and remove from map
 				console.log('remove', arguments);
 			},
 			'{scope.farm.placements} add': function(Scope, ev, added) {
+				//Bind map events and add to map
 				console.log('add', arguments);
 			},
+			//TODO: Handle changing farm and changing the map
 			'{scope} farm': function() {
 				var self = this;
-				this.on();
 				this.scope.createMap(this.element.find('.map')[0]);
 				this.map = this.scope.attr('map');
 				this.farm = this.scope.attr('farm');
@@ -90,13 +88,13 @@ define([
 				}
 			},
 			'{scope.farm.placements} click': function(markers, ev, mapEv, placement) {
-				appState.attr('activePlacement', placement);
+				// appState.attr('activePlacement', placement);
 				appState.attr('placementId', placement.id);
 				appState.attr('screen', 'placement');
 			},
 			'{scope.farm.placements} dragstart': function(markers, ev, mapEv, placement) {
 				placement.attr('moves', placement.attr('moves') + 1);
-				appState.attr('activePlacement', placement);
+				appState.attr('placementId', placement.id);
 			},
 			'{scope.farm.placements} drag': function(markers, ev, mapEv, placement) {
 				var position = mapEv.latLng;
@@ -104,6 +102,14 @@ define([
 					latitude: position.lat(),
 					longitude: position.lng()
 				});
+			},
+            '{appState} showMap': function(appState, ev, newVal) {
+				//Prevent half loaded tiles
+				//TODO: Reset zoom?
+				if(newVal) {
+					var map = this.scope.attr('map');
+					google.maps.event.trigger(map, 'resize');
+				}
 			}
 		}
 	});

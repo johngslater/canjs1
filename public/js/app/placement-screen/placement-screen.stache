@@ -1,4 +1,4 @@
-<!-- Look into how to fix this {{#if ./placement}} -->
+{{#if ./placement}}
 	<gt-placement-form placement={placement}></gt-placement-form>
-<!-- {{/if}} -->
+{{/if}}
 <hr>
