@@ -26,7 +26,7 @@ define([
 		template: can.stache(template),
 		scope: viewModel,
 		events: {
-			'inserted': function(){  // TBD
+			'inserted': function(){  // TBD  text
 
 
 
