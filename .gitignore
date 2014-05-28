@@ -15,3 +15,5 @@ doc/app
 .DS_Store
 .sass-cache/*
 vendor/ruby
+*node_modules*
+*.DS_Store
