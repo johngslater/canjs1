@@ -21,7 +21,12 @@ define([
     Component.extend({
         tag: 'gt-placement-screen',
         template: can.stache(template),
-        scope: ViewModel
+        scope: ViewModel,
+        events: {
+            '.graph click': function() {
+                this.scope.gotoGraph();
+            }
+        }
     });
 
     return ViewModel;

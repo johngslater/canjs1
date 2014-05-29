@@ -13,7 +13,7 @@ define([
 	'require',
 	'can',
 	'app/models/appstate',
-	'app/models/gauges',
+	// 'app/models/gauges',
 	'text!./index.stache',
 	'can/view/stache',
 	'app/map-screen/map-screen',
@@ -66,10 +66,10 @@ define([
 		},
 		{
 			template: can.stache('<gt-placement-screen class="screen {{#if showPlacement}}active{{/if}}" placement="{placement}" farm="{farm}"></gt-placement-screen>')
-		}
-		/*{
+		},
+		{
 			template: can.stache('<gt-graph-screen class="screen {{#if showGraph}}active{{/if}}"></gt-placement-screen>')
-		}*/
+		}
 		];
 
 		$('#app').append(can.stache(indexTemplate)(appState));

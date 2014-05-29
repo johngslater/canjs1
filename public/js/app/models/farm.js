@@ -16,8 +16,14 @@ define([
 				lng: +data.farm_longitude,
 				placements: []
 			};
-			for(var placement in data.placement) {
-				parsed.placements.push(data.placement[placement]);
+			for(var id in data.placement) {
+				var placement = data.placement[id];
+				var gnode_model_id = placement.gnode_model_id;
+				var senses = can.map(gauges.configuration.gnode_model[gnode_model_id], function(obj, key){
+					return key;
+				});
+				placement.senses = senses;
+				parsed.placements.push(placement);
 			}
 			return new Farm(parsed);
 		}

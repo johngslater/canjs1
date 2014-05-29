@@ -6,5 +6,5 @@
 	<strong>Moves:</strong> {{placement.moves}}<br>
 	<strong>Lat:  </strong> {{placement.latitude}}<br>
 	<strong>Lng:  </strong> {{placement.longitude}}<br>
-	<senseIcons class='senseIcons'>{{placement.gnode_model_id}}the sense icons go here- how kick off drawing based on placement.model</senseIcons>
+	<ui-senseicons placement="{placement}">{</ui-senseicons>
 {{/placement}}
