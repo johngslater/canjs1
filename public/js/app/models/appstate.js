@@ -1,6 +1,6 @@
 define([
 	'can/map',
-    'app/models/farm',
+  'app/models/farm',
 	'can/map/define'
 ], function(Map, FarmModel){
 	'use strict';
