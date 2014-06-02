@@ -1,0 +1,5 @@
+<h2>{{./farm.name}}</h2>
+<gt-map farm="{farm}"></gt-map>
+{{#if ./placement}}
+	<gt-placement-form editable=false placement={placement}></gt-placement-form>
+{{/if}}

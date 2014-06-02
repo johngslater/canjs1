@@ -37,6 +37,7 @@ define([
         scope: ViewModel,
         events: {
       			'inserted': function(){
+
               var target=this.element.find('.senseIcons');
               target.html('senseIcons go here');
 
@@ -68,6 +69,9 @@ define([
                 senseIcons[k[0]](cnvs[0],k[1]);
                 target.append(cnvs);
               });
+
+
+              console.log('placement form inserted');
 
             }
         }

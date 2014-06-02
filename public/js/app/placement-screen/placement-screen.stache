@@ -2,3 +2,4 @@
 	<gt-placement-form placement={placement}></gt-placement-form>
 {{/if}}
 <hr>
+<a class="graph" href="javascript://">Graphs</a>

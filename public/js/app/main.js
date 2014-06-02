@@ -13,6 +13,7 @@ define([
 	'require',
 	'can',
 	'app/models/appstate',
+	// 'app/models/gauges',
 	'text!./index.stache',
 	'can/view/stache',
 	'app/map-screen/map-screen',
@@ -22,8 +23,9 @@ define([
 	//TODO: look into excluding module ids in r.js
 	'app/fixtures/farm',
 	'css!./app.css'
-], function(require, can, appState){
+], function(require, can, appState, Gauges){
 	'use strict';
+	window.Gauges = Gauges;
 
 	var indexTemplate = require('text!./index.stache');
 
@@ -64,10 +66,10 @@ define([
 		},
 		{
 			template: can.stache('<gt-placement-screen class="screen {{#if showPlacement}}active{{/if}}" placement="{placement}" farm="{farm}"></gt-placement-screen>')
-		}
-		/*{
+		},
+		{
 			template: can.stache('<gt-graph-screen class="screen {{#if showGraph}}active{{/if}}"></gt-placement-screen>')
-		}*/
+		}
 		];
 
 		$('#app').append(can.stache(indexTemplate)(appState));

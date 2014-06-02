@@ -1,0 +1,3 @@
+{{#placement.senses}}
+	<ui-iconcanvas sense="{.}"></ui-iconcanvas>
+{{/placement.senses}}
