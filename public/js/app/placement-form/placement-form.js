@@ -4,8 +4,7 @@ define([
     'app/models/appstate',
     'app/models/placement',  // JGS
     'app/models/farm', // JGS
- //   '../../ui/iconDrawers/senseIcons',  // WTF  got js/app/ui/iconDrawers/senseIcons
-    'ui/iconDrawers/senseIcons',
+    'ui/senseicons/senseicons',
     'text!./placement-form.stache',
     'can/view/stache',
     'can/map/define'
@@ -17,6 +16,7 @@ define([
 	  var ViewModel = function(attrs, parentScope, element) { // JGS : what is attrs
 //      debugger;   // attrs looks like the template
         return can.Map.extend({
+          //http://canjs.com/docs/can.Map.prototype.define.html
             define: {
                 editable: {
                     value: attrs.editable || true,
@@ -30,14 +30,15 @@ define([
             }
         });
     };
-
     Component.extend({
         tag: 'gt-placement-form',
         template: can.stache(template),
         scope: ViewModel,
         events: {
       			'inserted': function(){
-
+              //Need to use <ui-senseicons></ui-senseicons> to draw icons since senseicons is a component
+              //You can configure the behavior of the component by passing in attributes
+              //http://canjs.com/docs/can.Component.html
               var target=this.element.find('.senseIcons');
               target.html('senseIcons go here');
 

@@ -3,6 +3,7 @@ require.config({
     baseUrl: '/js/lib',
     paths : {
         'app': '../app',
+		'ui':'../ui',
         'test': '../app/test',
 		'jquery' : 'jquery/jquery',
 		'can': 'canjs/amd/can',
