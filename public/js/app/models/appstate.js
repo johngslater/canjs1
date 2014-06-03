@@ -65,13 +65,13 @@ define([
 			}
 		},
 
-    state:'same as currentScreen at this moment',
-    currentScreen:'loginScreen',  // TODO: should be a screen, not a string
-        // maybe currentScreen is a fn that returns the top of screenHistory
-       // login,farm,map,newPlacement w/WR,placement,graph
-    lastScreen:'from localStorage',
-    screenHistory:[], // setScreen pushes on to, back pops w/o setScreen
-       // when close prgm, what do we put in localStorage
+    // state:'same as currentScreen at this moment',
+    // currentScreen:'loginScreen',  // TODO: should be a screen, not a string
+    //     // maybe currentScreen is a fn that returns the top of screenHistory
+    //    // login,farm,map,newPlacement w/WR,placement,graph
+    // lastScreen:'from localStorage',
+    // screenHistory:[], // setScreen pushes on to, back pops w/o setScreen
+    //    // when close prgm, what do we put in localStorage
 
 
     editing:false,
