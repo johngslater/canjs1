@@ -1,5 +1,5 @@
 <h2>{{./farm.name}}</h2>
-<gt-map farm="{farm}"></gt-map>
+<app-map farm="{farm}"></app-map>
 {{#if ./placement}}
-	<gt-placement-form editable=false placement={placement}></gt-placement-form>
+	<app-placement-form editable=false placement={placement}></app-placement-form>
 {{/if}}

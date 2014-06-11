@@ -22,5 +22,6 @@ require.config({
 			deps: ['jquery'],
 			exports: 'FuncUnit'
 		}
-	}
+	},
+	fixtures: true
 });

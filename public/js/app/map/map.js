@@ -52,7 +52,7 @@ define([
 	});
 	//Need to trigger resize on the map if we hide it then show it again
 	can.Component.extend({
-		tag: 'gt-map',
+		tag: 'app-map',
 		template: '<div class="map"></div>',
 		scope: viewModel,
 		events: {

@@ -12,7 +12,7 @@ define([
 	var ViewModel = {};
 
   Component.extend({
-    tag     :'gt-graph-screen',
+    tag     :'app-graph-screen',
     template:can.stache(template),
     scope   :ViewModel,
     events  :{

@@ -1,6 +1,6 @@
 define([
 	'can/map',
-  'app/models/farm',
+	'app/models/farm',
 	'can/map/define'
 ], function(Map, FarmModel){
 	'use strict';
@@ -31,13 +31,16 @@ define([
 					var farm = this.attr('farm');
 					if(!farm) {
 						FarmModel.findOne({id: newId}).then(function(farm){
-			                self.attr('farm', farm);
-			                self.attr('placement', farm.getPlacement(newId));
+							self.attr('farm', farm);
+							self.attr('placement', farm.getPlacement(newId));
 			            });
 					} else {
 						this.attr('placement', farm.getPlacement(newId));
 					}
 					return newId;
+				},
+				remove: function() {
+					this.removeAttr('placement');
 				}
 			},
 			showMap: {
@@ -74,9 +77,9 @@ define([
     //    // when close prgm, what do we put in localStorage
 
 
-    editing:false,
-    showGraph:false,
-    activePlacement:undefined
+    // editing:false,
+    // showGraph:false,
+    // activePlacement:undefined
   }); // editing showGraph activePlacement
 
   // TODO: implement setScreen, back

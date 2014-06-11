@@ -1,5 +1,8 @@
-define(['jquery'], function($) {
-	QUnit.testDone(function(){
-		console.log('DONE:', arguments);
-	});
+define(function(require) {
+	require('app/fixtures/farm');
+
+	var common = {};
+	//Define comming helpers, etc
+
+	return common;
 });

@@ -10,6 +10,7 @@
     "jquery": "*",
     "funcunit": "~2.0.4",
     "qunit": "~1.14.0",
-    "momentjs": "~2.6.0"
+    "momentjs": "~2.6.0",
+    "moment-range": "~1.0.2"
   }
 }

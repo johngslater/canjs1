@@ -6,6 +6,7 @@ require.config({
       'jquery' : 'jquery/jquery',
       'can': 'canjs/amd/can',
       'googlemap': 'googlemap/googlemap',
+      'moment': 'momentjs/moment',
       'maputil': 'googlemap/util',
       'markerwithlabel': 'googlemap/markerwithlabel',
       'async': 'requirejs-plugins/src/async',
@@ -15,7 +16,8 @@ require.config({
     },
     shim: {
       'markerwithlabel': ['googlemap']
-    }
+    },
+    fixtures: false
 });
 
 require(['app/main']);

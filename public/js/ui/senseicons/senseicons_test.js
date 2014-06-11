@@ -1,16 +1,11 @@
 define([
 	'jquery',
-	'funcunit'
-], function($, F){
+	'funcunit',
+    'ui/senseicons/senseicons'
+], function($, F, ViewModel){
 	'use strict';
 
-	module('senseicons', {
-		setup: function() {
-		},
-		teardown: function() {
-			$('#qunit-test-area').empty();
-		}
-	});
+	module('ui-senseicons');
 
 	test('ok', function(){
 		ok(true, 'works!');

@@ -5,6 +5,8 @@ define(function(require){
 
 	var template = require('text!./senseicons.stache');
 
+	require('can/view/stache');
+
 	require('./iconcanvas/iconcanvas');
 
 	var ViewModel = {};

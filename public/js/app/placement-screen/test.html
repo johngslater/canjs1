@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>Marker Screen Tests</title>
+		<title>Placement Screen Tests</title>
 		<link rel="stylesheet" href="/js/lib/qunit/qunit/qunit.css"/>
 		<script data-main="/js/app/test/require_config" src="/js/lib/requirejs/require.js"></script>
 		<script src="/js/lib/qunit/qunit/qunit.js"></script>
@@ -12,7 +12,7 @@
 			QUnit.config.autostart = false;
 			window.addEventListener('load', function onLoad(){
 				setTimeout(function(){
-					require(['./marker-screen_test.js'], function(){
+					require(['./placement-screen_test.js'], function(){
      					QUnit.load();
      					QUnit.start();
 					})

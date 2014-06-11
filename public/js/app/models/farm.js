@@ -1,15 +1,16 @@
-define([
-	'can/model',
-	'app/models/placement',
-	'can/map/define',
-], function(Model, Placement){
+define(function(require){
 	'use strict';
+
+	var Model = require('can/model');
+	var Placement = require('app/models/placement');
+
+	require('can/map/define');
 
 	var Farm = can.Model.extend({
 		findOne: 'GET /gauges',
 		//BUG: parseModel calls model which calls parseModel again!?
 		model: function(gauges, xhr) {
-      var data=gauges.configuration;
+			var data = gauges.configuration;
 			var parsed = {
 				name: data.farm_name,
 				lat: +data.farm_latitude,

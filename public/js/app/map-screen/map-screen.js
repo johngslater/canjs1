@@ -8,7 +8,6 @@ define([
     'text!./map-screen.stache',
     'can/view/stache'
 ], function(require, Component, appState, FarmModel, MarkerMapViewModel){
-  console.log(FarmModel)
     'use strict';
 
     var template = require('text!./map-screen.stache');
@@ -18,7 +17,7 @@ define([
     });
 
     Component.extend({
-        tag: 'gt-map-screen',
+        tag: 'app-map-screen',
         template: can.stache(template),
         scope: viewModel,
         events: {
