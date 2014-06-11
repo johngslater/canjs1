@@ -15,6 +15,8 @@ define(function(require){
 	var can = require('can');
 	var appState = require('app/models/appstate');
 
+	window.appState = appState;
+
 	var indexTemplate = require('text!./index.stache');
 
 	require('can/view/stache');
