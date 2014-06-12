@@ -66,7 +66,7 @@ define(function(require){
 			template: can.stache('<app-placement-screen class="screen {{#if showPlacement}}active{{/if}}" placement="{placement}" farm="{farm}"></app-placement-screen>')
 		},
 		{
-			template: can.stache('<app-graph-screen class="screen {{#if showGraph}}active{{/if}}"></app-placement-screen>')
+			template: can.stache('<gt-graph-screen class="screen {{#if showGraph}}active{{/if}}" sense="{sense}"></gt-graph-screen>')
 		}
 		];
 
@@ -75,7 +75,7 @@ define(function(require){
 		can.route.ready();
 
 		can.each(screens, function(screen){
-			$('#content').append(screen.template(appState));
+			$('#content').append(screen.template(appState));  // so this is where appState becomes the scope
 		});
 
 	});

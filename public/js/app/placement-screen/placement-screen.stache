@@ -1,5 +1,28 @@
 {{#if ./placement}}
-	<app-placement-form placement={placement}></app-placement-form>
+
+<!-- ./ is a relative lookup  , not documented
+  so ./  says dont walk up the tree
+
+-->
+<!-- js/app/main.js	 has
+template: can.stache(
+'<gt-placement-screen
+   class="screen {{#if showPlacement}}active{{/if}}"
+   placement="{placement}"
+   farm="{farm}">
+ </gt-placement-screen>')
+-->
+<!-- where is the doc that I can figure this out
+http://canjs.com/docs/can.Component.html  down 55 lines, 2nd block
+-->
+
+	<gt-placement-form placement={placement}></gt-placement-form>
 {{/if}}
+
+aaa
 <hr>
-<a class="graph" href="javascript://">Graphs</a>
+zzzz
+<!--
+stackoverflow.com/questions/7755088/what-does-href-expression-a-href-javascript-a-do
+-->
+<a class="graph" href="javascript://">Graphss</a>

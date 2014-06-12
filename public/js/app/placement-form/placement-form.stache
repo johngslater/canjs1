@@ -6,5 +6,5 @@
 	<strong>Moves:</strong> {{placement.moves}}<br>
 	<strong>Lat:  </strong> {{placement.latitude}}<br>
 	<strong>Lng:  </strong> {{placement.longitude}}<br>
-	<ui-senseicons placement="{placement}">{</ui-senseicons>
+	<gt-senseicons placement="{placement}"></gt-senseicons>
 {{/placement}}

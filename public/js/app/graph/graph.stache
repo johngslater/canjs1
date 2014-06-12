@@ -1,3 +1,6 @@
-dont put tag app-graph in this file xxx
 
-<canvas id='myCanvas' width='300' height='350'>a plot goes here</canvas>
+<!-- dont put tag gt-graph in this file, goes in the file that want graph inserted -->
+
+<canvas id='myCanvas' width='300' height='350'>300x350 plot goes here</canvas>
+<div id='graph_sense'>{{appState.sense}}</div>
+<div id='graph_sense_manual'>set the sense manually here</div>

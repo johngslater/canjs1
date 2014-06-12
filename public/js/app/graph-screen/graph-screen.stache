@@ -1,1 +1,5 @@
-<h2>Graph</h2>
+<gt-graph></gt-graph>
+{{sense}}
+<div id=graphLabel>If you can see this, something is wrong, should be set by graph-screen.js/fsm</div>
+
+

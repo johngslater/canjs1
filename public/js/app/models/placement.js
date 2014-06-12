@@ -1,19 +1,19 @@
 define([
 	'can/list',
 	'can/map',
-	'maputil',
-	'markerwithlabel',
+	'maputil',         // config.js  'maputil': 'googlemap/util',
+	'markerwithlabel', // config.js  'markerwithlabel': 'googlemap/markerwithlabel',
 	'can/map/define',
 	'can/construct/super'
 ], function(List, Map, MapUtils){
 	'use strict';
 
 	var Placement = Map.extend({
-		setup: function(attrs){
+		setup: function(attrs){  // http://canjs.com/docs/can.Construct.setup.html
 			//http://canjs.com/docs/can.Construct.super.html
-			//calls can.Map.prototype.setup
+			//calls can.Map.prototype.setup   // what is in this setup that is so importnat
 			this._super(can.extend(attrs, {
-				marker: new MarkerWithLabel({
+				marker: new MarkerWithLabel({  // MarkerWithLabel is from lib/googlemap/markerwithlabel.js
 					draggable: true,
 					icon: '/img/green-dot.png',
 					title: attrs.display_name,
