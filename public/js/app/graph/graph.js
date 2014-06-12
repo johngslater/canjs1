@@ -22,7 +22,7 @@ define([
 	//Need to trigger resize on the map if we hide it then show it again
   var template=require('text!./graph.stache');  // ./ needs require to figure out the path
 	can.Component.extend({
-		tag: 'gt-graph',
+		tag: 'app-graph',
 		template: can.stache(template),
 		scope: viewModel,
 		events: {

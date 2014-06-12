@@ -3,7 +3,6 @@ define([
 	'funcunit',
     'app/models/appstate',
 	'app/map-screen/map-screen',
-	'app/fixtures/marker'
 ], function($, F, appState, ViewModel){
 	'use strict';
 
@@ -14,7 +13,7 @@ define([
 			appState.attr({
 				activeMarker: 1
 			});
-			$('#qunit-test-area').html(can.stache('<gt-map-screen></gt-map-screen>')());
+			$('#qunit-test-area').html(can.stache('<app-map-screen></app-map-screen>')());
 		},
 		teardown: function() {
 			$('#qunit-test-area').empty();
@@ -23,7 +22,7 @@ define([
 	});
 
 	test('marker-map is present', function(){
-		F("gt-marker-map").exists('marker-map exists');
+		F("app-marker-map").exists('marker-map exists');
 	});
 
 	module('map-screen: view model', {

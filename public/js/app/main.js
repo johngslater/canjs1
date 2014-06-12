@@ -9,29 +9,27 @@
 */
 
 //CC: stache!, ejs! and mustache! plugins are being developed so we don't have to use text! then run can.stache
-define([
-	'require',
-	'can',
-	'app/models/appstate',
-	// 'app/models/gauges',
-	'text!./index.stache',
-	'can/view/stache',
-	'app/map-screen/map-screen',
-	'app/placement-screen/placement-screen',
-	'app/graph-screen/graph-screen',
-	//TODO: Remove these for production builds
-	//TODO: look into excluding module ids in r.js
-	'app/fixtures/farm',
-	'css!./app.css'
-], function(require, can, appState, Gauges){
+define(function(require){
 	'use strict';
-	window.Gauges = Gauges;
+
+	var can = require('can');
+	var appState = require('app/models/appstate');
+
+	window.appState = appState;
 
 	var indexTemplate = require('text!./index.stache');
 
+	require('can/view/stache');
+	require('app/map-screen/map-screen');
+	require('app/placement-screen/placement-screen');
+	require('css!./app.css');
+
+	//TODO: look at how we can conditionally load fixtures with a loader plugin
+	//https://github.com/jrburke/requirejs/issues/451
+	require('app/fixtures/farm');
+
 	$(function(){
 
-		window.appState = appState;
 		appState.attr({
 			farmId: 1
 		});
@@ -62,13 +60,13 @@ define([
 		var indexView = can.stache(indexTemplate);
 
 		var screens = [{
-			template: can.stache('<gt-map-screen class="screen {{#if showMap}}active{{/if}}" placement="{placement}" farm="{farm}"></gt-map-screen>')
+			template: can.stache('<app-map-screen class="screen {{#if showMap}}active{{/if}}" placement="{placement}" farm="{farm}"></app-map-screen>')
 		},
 		{
-			template: can.stache('<gt-placement-screen class="screen {{#if showPlacement}}active{{/if}}" placement="{placement}" farm="{farm}"></gt-placement-screen>')
+			template: can.stache('<app-placement-screen class="screen {{#if showPlacement}}active{{/if}}" placement="{placement}" farm="{farm}"></app-placement-screen>')
 		},
 		{
-			template: can.stache('<gt-graph-screen class="screen {{#if showGraph}}active{{/if}}"></gt-placement-screen>')
+			template: can.stache('<app-graph-screen class="screen {{#if showGraph}}active{{/if}}"></app-placement-screen>')
 		}
 		];
 

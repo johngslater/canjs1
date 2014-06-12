@@ -1,5 +1,5 @@
 {{#if ./placement}}
-	<gt-placement-form placement={placement}></gt-placement-form>
+	<app-placement-form placement={placement}></app-placement-form>
 {{/if}}
 <hr>
 <a class="graph" href="javascript://">Graphs</a>

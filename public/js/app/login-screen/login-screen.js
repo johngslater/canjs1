@@ -16,7 +16,7 @@ define([
     });
 
     Component.extend({
-        tag: 'gt-map-screen',
+        tag: 'app-map-screen',
         template: can.stache(template),
         scope: viewModel,
         events: {

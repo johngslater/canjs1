@@ -1,14 +1,11 @@
 define([
 	'jquery',
 	'funcunit',
-	'app/marker-screen/marker-screen',
-	'app/fixtures/marker'
+	'app/placement-screen/placement-screen',
 ], function($, F, ViewModel){
 	'use strict';
 
-	var viewModel;
-
-	module('marker-screen');
+	module('app-placement-screen');
 
 	test('ok', function(){
 		ok(true);

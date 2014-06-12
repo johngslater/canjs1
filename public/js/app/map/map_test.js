@@ -1,12 +1,11 @@
 define([
 	'jquery',
 	'funcunit',
-	'app/map/map',
-	'app/fixtures/marker'
+	'app/map/map'
 ], function($, F, ViewModel){
 	'use strict';
 
-	module('gt-map');
+	module('app-map');
 
 	test('ok', function(){
 		ok(true);

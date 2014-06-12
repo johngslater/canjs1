@@ -19,7 +19,7 @@ define([
     };
 
     Component.extend({
-        tag: 'gt-placement-screen',
+        tag: 'app-placement-screen',
         template: can.stache(template),
         scope: ViewModel,
         events: {
