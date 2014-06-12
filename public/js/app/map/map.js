@@ -103,7 +103,12 @@ define([
 					longitude: position.lng()
 				});
 			},
-            '{appState} showMap': function(appState, ev, newVal) {
+      '{appState} showMap': function(appState, ev, newVal) { // {appState} is looked up on options, or looks up globally
+        // also look at http://canjs.com/docs/can.Control.html#section_Listeningtoevents
+        // templated ev handlers  'Templated Event Handlers Part 1 ' in same page of docs
+
+        // an ev is fired that has the same name as the attr name of the thing that changed
+
 				//Prevent half loaded tiles
 				//TODO: Reset zoom?
 				if(newVal) {

@@ -4,7 +4,7 @@ define([
     'app/models/appstate',
     'app/models/placement',  // JGS
     'app/models/farm', // JGS
-    'ui/senseicons/senseicons',
+    'app/senseicons/senseicons',
     'text!./placement-form.stache',
     'can/view/stache',
     'can/map/define'
@@ -13,8 +13,7 @@ define([
 
     var template = require('text!./placement-form.stache');
 
-	  var ViewModel = function(attrs, parentScope, element) { // JGS : what is attrs
-//      debugger;   // attrs looks like the template
+	  var ViewModel = function(attrs, parentScope, element) { // JGS : who calls this????
         return can.Map.extend({
           //http://canjs.com/docs/can.Map.prototype.define.html
             define: {
@@ -28,6 +27,21 @@ define([
                   type: "object"
                 }
             }
+
+//          return can.Map.extend(
+//          this is what it should be
+//          can_define({
+//              editable: {
+//                  value: attrs.editable || true,
+//                  type: "boolean"
+//              },
+//            // JGS stuff added May 28
+//              placement: {
+//                value:attrs.placement,
+//                type: "object"
+//              }
+//          })
+//
         });
     };
     Component.extend({
@@ -36,49 +50,20 @@ define([
         scope: ViewModel,
         events: {
       			'inserted': function(){
-              //Need to use <ui-senseicons></ui-senseicons> to draw icons since senseicons is a component
+              //Need to use <gt-senseicons></gt-senseicons> to draw icons
+              //  since senseicons is a component
               //You can configure the behavior of the component by passing in attributes
               //http://canjs.com/docs/can.Component.html
-              var target=this.element.find('.senseIcons');
-              target.html('senseIcons go here');
-
-         //     var cnt=0; make it a global
-              var newCnvs=function(){cnt+=1;
-                var id='cnvs'+cnt;
-                console.log('placement-form.Component.events.inserted making a canvas with id:'+id);
-                return $('<canvas>').attr({ id:id, width:'45', height:'45' });
-              };
-
-              var arr=[
-                ['sun',true],
-                ['thermometer',true],
-                ['thermometer',false],
-                ['drop',true],
-                ['elec',true]
-              ];
-              $.map(arr,function(k,iii){
-                var cnvs=newCnvs();
-                var cb=(function(){
-                  return function(ev){
-                    console.log(iii,k); // now do something - need to pass in the operation desired
-                    console.log(appState.placement);
-                    debugger;
-                  };
-                })();
-                cnvs.click(cb);
-
-                senseIcons[k[0]](cnvs[0],k[1]);
-                target.append(cnvs);
-              });
-
 
               console.log('placement form inserted');
-
+              console.log('the gt-senseicons tag will automagically update everything')
+              console.log(this); // produces an error
+            //console.log(ViewModel);  // the fn defined above
+              console.log(this.scope); // has values substituted
+              return; // the rest of this stuff is now taken over by senseicons.js
             }
         }
-
     });
     return ViewModel;
 });
-
 var cnt=0;

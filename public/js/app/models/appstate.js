@@ -65,6 +65,7 @@ define([
 			}
 		},
 
+    // routing and the browser keep track of this - so Curtis commented out my pseudo code
     // state:'same as currentScreen at this moment',
     // currentScreen:'loginScreen',  // TODO: should be a screen, not a string
     //     // maybe currentScreen is a fn that returns the top of screenHistory
