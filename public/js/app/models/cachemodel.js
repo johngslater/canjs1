@@ -2,21 +2,32 @@ define(function(require){
 	'use strict';
 
 	var Construct = require('can/construct');
-	var List = require('can/list');
 	var Storage = require('ui/storage/storage');
 	var moment = require('moment');
+	var appSettings = require('app/settings');
+
+	require('can/construct/proxy');
+
+	//Make sure all requests have a token
+	require('app/models/util/tokenizeRequest');
+
+	if(appSettings.fixtures) {
+		require(['app/fixtures/gauges'], function(){});
+	}
+
+	var firstRequest = true;
 
 	var CacheModel = Construct.extend({
 		defaults: {
 			dateFormat: 'YYYY-MM-DD',
-			prefix: 'gauges_',
+			configKey: 'gProducts',
+			dataPrefix: 'gauges_',
 			daySpan: 3,
 			ajaxOptions: {
 				type: 'get',
 				url: '/gauges',
 				dataType: 'json'
-			},
-			List: List
+			}
 		}
 	}, {
 		setup: function(config) {
@@ -37,7 +48,8 @@ define(function(require){
 				request.done(function(){
 					delete pending[key];
 				});
-				return pending[key] = request;
+				pending[key] = request;
+				return request;
 			}
 		},
 		_isPending: function(key) {
@@ -53,11 +65,10 @@ define(function(require){
 
 			//Loop through the days between start and end and determine if we have the data.
 			//We do this instead of keeping track of the dates cached because this will
-			//support discontinuous sets of dates. The solution to handle this with tracking
-			//still involves looping and extra overhead
+			//support discontinuous sets of dates.
 			for(iterator; iterator.isBefore(endDate); iterator.add('days', 1)) {
 				currentDay = iterator.format(this.config.dateFormat);
-				if(!(lookup = this._storage.get(this.config.prefix + currentDay))) {
+				if(!(lookup = this._storage.get(this.config.dataPrefix + currentDay))) {
 					//Miss, store date so we can do a request.
 					cacheMisses.push(currentDay);
 				} else {
@@ -71,13 +82,70 @@ define(function(require){
 				misses: cacheMisses
 			};
 		},
-		find: function(params) {
+		_merge: function(data, pending, requestForData) {
 			var self = this,
+				def = $.Deferred(),
+				isArray = Object.keys(data).length + pending.length > 1,
+				requests = can.map(pending, function(p){
+					return p.request;
+				}),
+				instanceData = isArray ? [] : {},
+				addData = can.proxy(function(data) {
+					if(isArray) {
+						instanceData.push(data);
+					} else {
+						instanceData = can.extend(true, instanceData, data);
+					}
+				}, this);
+
+			//Add existing data to Array that will become the List.
+			can.each(data, function(d, date){
+				addData(d);
+			});
+
+			//Register success callback for each pending request that will
+			//add more data to the List instance
+			can.each(pending, function(p){
+				p.request.then(function(newData){
+					//Update configuration on each request then delete configuration so data in
+					//storage is 'clean'
+					if(newData.configuration) {
+						self._updateConfiguration(newData.configuration);
+						delete newData.configuration;
+					}
+					self._storage.set(self.config.dataPrefix + p.key, newData);
+
+					addData(newData);
+				});
+			});
+			//Return a Deferred that resolves when all the pending requests resolve
+			$.when.apply(null, requests).then(function() {
+				if(requestForData) {
+					def.resolve(instanceData);
+				} else {
+					def.resolve(self._storage.get(self.config.configKey));
+				}
+			});
+			return def;
+		},
+		_updateConfiguration: function(config) {
+			var oldConfig = this._storage.get(this.config.configKey) || {},
+				newConfig = can.extend(true, oldConfig, config);
+
+			this._storage.set(this.config.configKey, newConfig);
+		},
+		find: function(params, isData) {
+			var self = this,
+				requestParams = can.extend({}, params),
+				requestForData = typeof isData !== 'undefined' ? isData : true,
 				cacheInfo = this._cacheLookup(params),
 				pendingRequests = [];
 
+			console.info('CacheModel:', params);
+			delete params.src;
+
 			can.each(cacheInfo.misses, function(date){
-				var key = self.config.prefix + date,
+				var key = self.config.dataPrefix + date,
 					ajaxOptions;
 
 				//If request for this date is already pending, we use the existing pending request
@@ -87,48 +155,28 @@ define(function(require){
 						request: self._pending[key]
 					});
 				} else {
+					//Override start/end date to be a single day
 					ajaxOptions = can.extend({}, self.config.ajaxOptions, {
-						data: {
+						data: can.extend(requestParams, {
 							startDate: date,
 							endDate: date
-						}
+						})
 					});
+					//If this is the first request, we wait until it is complete before
+					//making anymore requests so we have the configuration
+					if(firstRequest) {
+						firstRequest = false;
+						ajaxOptions.data.configuration_last_received_at = '';
+					}
 
 					pendingRequests.push({
 						key: date,
-						request: self._addPending(self.config.prefix + date, can.ajax(ajaxOptions))
+						request: self._addPending(self.config.dataPrefix + date, can.ajax(ajaxOptions))
 					});
 				}
 			});
 
-			return this._merge(cacheInfo.hits, pendingRequests);
-		},
-		_merge: function(data, pending) {
-			var self = this,
-				instanceData = [],
-				instance;
-
-			//Add existing data to Array that will become the List returned.
-			can.each(data, function(d, date){
-				instanceData.push(d);
-			});
-
-			//Create list.
-			instance = new this.config.List(instanceData);
-
-			//Register success callback for each pending request that will
-			//add more data to the List instance
-			can.each(pending, function(p){
-				p.request.then(function(newData){
-					var parsedData = self._parseData(newData);
-					self._storage.set(self.config.prefix + p.key, parsedData);
-					instance.push(parsedData);
-				});
-			});
-			return instance;
-		},
-		_parseData: function(data){
-			return data;
+			return this._merge(cacheInfo.hits, pendingRequests, requestForData);
 		}
 	});
 

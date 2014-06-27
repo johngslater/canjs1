@@ -1,17 +1,46 @@
-define([
-	'can/list',
-	'can/map',
-	'maputil',
-	'markerwithlabel',
-	'can/map/define',
-	'can/construct/super'
-], function(List, Map, MapUtils){
+define(function(require){
 	'use strict';
 
-	var Placement = Map.extend({
+	var $ = require('jquery');
+	var Model = require('can/model');
+	var appSettings = require('app/settings');
+	var CacheModel = require('app/models/cachemodel');
+	var MapUtils = require('maputil');
+	require('markerwithlabel');
+	require('can/construct/super');
+
+	var cacheModel = new CacheModel({
+		ajaxOptions: {
+			url: appSettings.api.gauges
+		}
+	});
+
+	var Placement = Model.extend({
+		findAll: function(params) {
+			return cacheModel.find(params, false);
+		},
+		models: function(data) {
+			var placements = [];
+			for(var id in data.placement) {
+				var placement = data.placement[id];
+				var gnode_model_id = placement.gnode_model_id;
+				var senses = can.map(data.gnode_model[gnode_model_id], function(obj, key){
+					return key;
+				});
+				placement.senses = senses;
+				placements.push(placement);
+			}
+			return new Placement.List(placements);
+		}
+	}, {
+		//TODO: What data needs to be Observable?
+		//We can exlude it here or use LazyMap
+		define: {
+			moves: {
+				value: 0
+			}
+		},
 		setup: function(attrs){
-			//http://canjs.com/docs/can.Construct.super.html
-			//calls can.Map.prototype.setup
 			this._super(can.extend(attrs, {
 				marker: new MarkerWithLabel({
 					draggable: true,
@@ -21,11 +50,6 @@ define([
 					position: MapUtils.latLng(attrs.latitude, attrs.longitude)
 				})
 			}));
-		},
-		define: {
-			moves: {
-				value: 0
-			}
 		},
 		bindMapEvents: function(list) {
 			var marker = this.marker;

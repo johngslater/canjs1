@@ -12,21 +12,50 @@
 define(function(require){
 	'use strict';
 
-	var Model = require('app/models/cacheModel');
-	window.myStorage = require('ui/storage/storage');
+	require('css!./app.css');
+	var appSettings = require('app/settings');
+	var can = require('can');
+	var appState = require('app/models/appstate');
+	var PlacementModel = require('app/models/placement');
+	var ReadingModel = require('app/models/reading');
+	var Farm = require('app/models/farm');
+
+	$(function(){
+
+		// appState.attr('token', 'LCz7ugSWYT8SuWzQWF4A');
+		appState.attr('token', 'xq998Xz4mLmEYzZHqndu');
+
+		PlacementModel.findAll({
+			start_time: appState.attr('startTime'),
+			end_time: appState.attr('endTime'),
+			resolution: 900
+		}).then(function(data) {
+			console.log('Got placements', data);
+		}, function(){
+			console.error('ERROR', arguments);
+		});
+
+		ReadingModel.findAll({
+			start_time: appState.attr('startTime'),
+			end_time: appState.attr('endTime'),
+			resolution: 900
+		}).then(function(data) {
+			console.log('Got readings', data);
+		}, function(){
+			console.error('ERROR', arguments);
+		});
+
+		new Farm({
+			start_time: appState.attr('startTime'),
+			end_time: appState.attr('endTime'),
+			resolution: 900
+		}).then(function(data) {
+			console.log('Got farm', data);
+		}, function(){
+			console.error('ERROR', arguments);
+		});
 
 
-	require('app/fixtures/demo');
-	require('can/view/stache');
-
-	var cachedModel = new Model({});
-
-	var template = can.stache('<ul>{{#each .}}<li>{{name}}</li>{{/each}}</ul>');
-	var list1 = cachedModel.find({startDate: '2014-06-01'});
-	var list2 = cachedModel.find({startDate: '2014-05-29'});
-	$('#app').append(template(list1));
-	$('#app').append('<hr>');
-	$('#app').append(template(list2));
-
+	});
 
 });

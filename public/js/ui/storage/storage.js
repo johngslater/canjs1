@@ -121,7 +121,7 @@ define(function(require){
 			return string.length;
 		},
 		set: function(key, value) {
-			//TODO: try/catch to detech quota exceeded
+			//TODO: try/catch to detect quota exceeded
 			//TODO: Handle case where key you are setting already exists
 			var toStore = JSON.stringify({readCount: 0, readTime: +new Date(), value: value});
 			this.makeSpace(toStore);

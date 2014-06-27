@@ -1,50 +1,38 @@
 define(function(require){
 	'use strict';
 
-	var Model = require('can/model');
-	var Placement = require('app/models/placement');
+	var $ = require('jquery');
+	var Construct = require('can/construct');
+	var Map = require('can/map');
+	var appSettings = require('app/settings');
+	var CacheModel = require('app/models/cachemodel');
 
-	require('can/map/define');
+	var cacheModel = new CacheModel({
+		ajaxOptions: {
+			url: appSettings.api.gauges
+		}
+	});
 
-	var Farm = can.Model.extend({
-		findOne: 'GET /gauges',
-		//BUG: parseModel calls model which calls parseModel again!?
-		model: function(gauges, xhr) {
-			var data = gauges.configuration;
-			var parsed = {
+	var Farm = Construct.extend({
+		init: function(params) {
+			var self = this,
+				deferred = $.Deferred();
+
+			cacheModel.find(params, false).then(function(data) {
+				deferred.resolve(new Map(self.parseData(data)));
+			}, function(){
+				deferred.reject();
+			});
+
+			//Give this Construct instance everything a promise has
+			can.extend(this, deferred.promise());
+		},
+		parseData: function(data) {
+			return {
 				name: data.farm_name,
 				lat: +data.farm_latitude,
-				lng: +data.farm_longitude,
-				placements: []
+				lng: +data.farm_longitude
 			};
-			for(var id in data.placement) {
-				var placement = data.placement[id];
-				var gnode_model_id = placement.gnode_model_id;
-				var senses = can.map(gauges.configuration.gnode_model[gnode_model_id], function(obj, key){
-					return key;
-				});
-				placement.senses = senses;
-				parsed.placements.push(placement);
-			}
-			return new Farm(parsed);
-		}
-	}, {
-		//http://canjs.com/docs/can.Map.prototype.define.html
-		define: {
-			placements: {
-				Type: Placement.List
-			}
-		},
-		getPlacement: function(id) {
-			var found;
-			var needle = +id;
-			this.attr('placements').each(function(placement){
-				if(placement.id === needle) {
-					found = placement;
-					return false;
-				}
-			});
-			return found;
 		}
 	});
 
