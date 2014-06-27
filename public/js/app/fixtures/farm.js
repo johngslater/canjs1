@@ -3,7 +3,7 @@ define([
 	'json!./farm.json',
 ], function(Fixture, farmData){
 
-	Fixture('GET /gauges', function(){
+	Fixture('GET http://secure.gthrive.com/api/v1/gauges.json', function(){   // EEEEE
 		return farmData;
 	});
 

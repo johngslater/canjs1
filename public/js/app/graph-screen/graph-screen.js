@@ -2,10 +2,12 @@ define([
   'require',
   'can/component',
   'app/models/appstate',
+  'app/senseicons/senseicons',
+
   'text!./graph-screen.stache',
   'app/graph/graph',  //  w/Curtis Monday
   'can/view/stache'
-], function (require, Component, appState) {
+], function (require, Component, appState,senseIcons) {
   'use strict';
 
   var template = require('text!./graph-screen.stache');

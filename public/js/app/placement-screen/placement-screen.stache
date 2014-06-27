@@ -1,9 +1,5 @@
-{{#if ./placement}}
+{{#if ./placement}} <!-- './' is a relative lookup, says dont walk up the tree. not documented -->
 
-<!-- ./ is a relative lookup  , not documented
-  so ./  says dont walk up the tree
-
--->
 <!-- js/app/main.js	 has
 template: can.stache(
 '<gt-placement-screen
@@ -12,17 +8,21 @@ template: can.stache(
    farm="{farm}">
  </gt-placement-screen>')
 -->
-<!-- where is the doc that I can figure this out
-http://canjs.com/docs/can.Component.html  down 55 lines, 2nd block
--->
 
-	<gt-placement-form placement={placement}></gt-placement-form>
+	<app-placement-form placement={placement}></app-placement-form> <!-- {placement} from js/app/main.js -->
+
+
+
+    <gt-senseicons placement="{placement}"></gt-senseicons>
+
+
+
+    <!-- doc that explains this: http://canjs.com/docs/can.Component.html  down 55 lines, 2nd block -->
+
 {{/if}}
 
-aaa
-<hr>
-zzzz
 <!--
 stackoverflow.com/questions/7755088/what-does-href-expression-a-href-javascript-a-do
--->
+
 <a class="graph" href="javascript://">Graphss</a>
+-->

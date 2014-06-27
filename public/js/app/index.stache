@@ -1,5 +1,5 @@
 <header>
-	<h1>gthrive App</h1>
+	<div id='headerLogo'><img src='img/gThrive_Logo.png'></div>
 </header>
 
 <div id="content" style="width:600px; height:600px"></div>

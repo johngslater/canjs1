@@ -17,23 +17,33 @@ define([
 				set: function(newId) {
 					var self = this;
 					if(this.attr('farmId') !== newId) {
-						FarmModel.findOne({id: newId}).then(function(farm){
+						FarmModel.findOne({
+              id: newId,
+              token:this.attr('token'),
+              start_time: this.attr('start_time'),
+              end_time:this.attr('end_time')
+            }).then(function(farm){
 							self.attr('farm', farm);
 						});
 					}
 					return newId;
 				}
 			},
-			placementId: {
+			placementId: {      // this is the 'focus' placement, we dont do rest calls based on this
 				type: 'number',
-				set: function(newId) {
+				set: function(newId) {  // focus ID
 					var self = this;
 					var farm = this.attr('farm');
 					if(!farm) {
-						FarmModel.findOne({id: newId}).then(function(farm){
+						FarmModel.findOne({
+              id: newId,
+              token:this.attr('token'),
+              start_time: this.attr('start_time'),
+              end_time:this.attr('end_time')
+            }).then(function(farm){
 							self.attr('farm', farm);
 							self.attr('placement', farm.getPlacement(newId));
-			            });
+			      });
 					} else {
 						this.attr('placement', farm.getPlacement(newId));
 					}
@@ -58,14 +68,18 @@ define([
 					return this.attr('screen') === 'graph';
 				}
 			},
-			//Objects stored in appState should not serialize
+			//Objects stored in appState should generally NOT serialize
+      // by setting to false, a prop change does not cause the emittion of a new url
 			//if they do, at the most you want an id or some other identifier
 			farm: {
 				serialize: false
 			},
 			placement: {
 				serialize: false
-			}
+			},
+      sense: {
+        serialize: false
+      }
 		},
 
     // routing and the browser keep track of this - so Curtis commented out my pseudo code

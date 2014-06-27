@@ -11,8 +11,7 @@ define([
 
     var template = require('text!./placement-screen.stache');
 
-	var ViewModel = {
-
+	  var ViewModel = {
         gotoGraph: function() {
             appState.attr('screen', 'graph');
         }

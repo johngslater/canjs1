@@ -7,7 +7,8 @@ define(function(require){
 	require('can/map/define');
 
 	var Farm = can.Model.extend({
-		findOne: 'GET /gauges',
+		findOne: 'GET http://secure.gthrive.com/api/v1/gauges.json', // options go into { }
+//  findOne: 'GET /gauges',  // does not want '.json'  --> must match  EEEEE in fixtures/farm.js
 		//BUG: parseModel calls model which calls parseModel again!?
 		model: function(gauges, xhr) {
 			var data = gauges.configuration;

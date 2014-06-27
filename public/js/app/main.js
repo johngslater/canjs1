@@ -22,19 +22,40 @@ define(function(require){
 	require('can/view/stache');
 	require('app/map-screen/map-screen');
 	require('app/placement-screen/placement-screen');
+  require('app/graph-screen/graph-screen'); // JGS: added jun18, jun25 still not getting placement info
 	require('css!./app.css');
 
 	//TODO: look at how we can conditionally load fixtures with a loader plugin
 	//https://github.com/jrburke/requirejs/issues/451
-	require('app/fixtures/farm');
+require('app/fixtures/farm');  // uncomment when need to use fixtures
+
+  require('app/models/farm');  // sets up the routes
 
 	$(function(){
 
+    appState.attr({
+      token:'LCz7ugSWYT8SuWzQWF4A'  // fresno2
+    });
+    appState.attr({
+      start_time:1399705200        // start_date=5_10_2014
+    });
+    appState.attr({
+      end_time:1400223600        // end_date=5_10_2014
+    });
+    appState.attr({
+      resolution:900
+    });
+    // setting farmID triggers a RESTful call that needs token+start_time+end_time, so must come last
 		appState.attr({
-			farmId: 1
+			farmId: 1        // in the rest url we will see id=1
 		});
 
+// todo: can compute for  start_date<-->start_time   end_date<-->end_time
+
+
 		//http://canjs.com/docs/can.route.map.html
+    // if you dont have a can.route then every prop of appState is in the url
+    // and any changes produce a new url
 		can.route.map(appState);
 
 		can.route('', {
@@ -53,20 +74,20 @@ define(function(require){
 			'screen': 'placement'
 		});
 
-		// can.route('graph/:farmId/:placementId', {
-		// 	'screen': 'graph'
-		// });
+		can.route('graph/:farmId/:placementId', {
+			'screen': 'graph'
+		});
 
 		var indexView = can.stache(indexTemplate);
 
 		var screens = [{
-			template: can.stache('<app-map-screen class="screen {{#if showMap}}active{{/if}}" placement="{placement}" farm="{farm}"></app-map-screen>')
+			template: can.stache('<app-map-screen       class="screen {{#if showMap}}active{{/if}}"       placement="{placement}" farm="{farm}"></app-map-screen>')
 		},
 		{
 			template: can.stache('<app-placement-screen class="screen {{#if showPlacement}}active{{/if}}" placement="{placement}" farm="{farm}"></app-placement-screen>')
 		},
 		{
-			template: can.stache('<gt-graph-screen class="screen {{#if showGraph}}active{{/if}}" sense="{sense}"></gt-graph-screen>')
+			template: can.stache('<app-graph-screen     class="screen {{#if showGraph}}active{{/if}}"     placement="{placement}" sense="{sense}"></app-graph-screen>')
 		}
 		];
 
@@ -77,6 +98,8 @@ define(function(require){
 		can.each(screens, function(screen){
 			$('#content').append(screen.template(appState));  // so this is where appState becomes the scope
 		});
+
+    $('#headerLogo').click(function(ev){ window.location.href=''; }); // we dont have a template for the header
 
 	});
 
