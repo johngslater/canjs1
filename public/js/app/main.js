@@ -12,8 +12,12 @@
 define(function(require){
 	'use strict';
 
+	var appSettings = require('app/settings');
 	var can = require('can');
 	var appState = require('app/models/appstate');
+	var getPlacements = require('app/models/placement/getPlacements');
+	var getReadings = require('app/models/reading/getReadings');
+	var getFarm = require('app/models/farm/getFarm');
 
 	window.appState = appState;
 
@@ -22,17 +26,14 @@ define(function(require){
 	require('can/view/stache');
 	require('app/map-screen/map-screen');
 	require('app/placement-screen/placement-screen');
-	require('css!./app.css');
+	require('app/graph-screen/graph-screen');
 
-	//TODO: look at how we can conditionally load fixtures with a loader plugin
-	//https://github.com/jrburke/requirejs/issues/451
-	require('app/fixtures/farm');
+	require('css!./app.css');
 
 	$(function(){
 
-		appState.attr({
-			farmId: 1
-		});
+		// appState.attr('token', 'LCz7ugSWYT8SuWzQWF4A');
+		appState.attr('token', 'xq998Xz4mLmEYzZHqndu');
 
 		//http://canjs.com/docs/can.route.map.html
 		can.route.map(appState);
@@ -41,26 +42,14 @@ define(function(require){
 			'screen': 'map'
 		});
 
-		can.route('map/:farmId', {
-			'screen': 'map'
-		});
-
-		can.route('map/:farmId/:placementId', {
-			'screen': 'map'
-		});
-
-		can.route('placement/:farmId/:placementId', {
-			'screen': 'placement'
-		});
-
-		// can.route('graph/:farmId/:placementId', {
+		// can.route('graph/:placementId', {
 		// 	'screen': 'graph'
 		// });
 
 		var indexView = can.stache(indexTemplate);
 
 		var screens = [{
-			template: can.stache('<app-map-screen class="screen {{#if showMap}}active{{/if}}" placement="{placement}" farm="{farm}"></app-map-screen>')
+			template: can.stache('<app-map-screen class="screen {{#if showMap}}active{{/if}}" farm="{farm}" placement="{placement}"></app-map-screen>')
 		},
 		{
 			template: can.stache('<app-placement-screen class="screen {{#if showPlacement}}active{{/if}}" placement="{placement}" farm="{farm}"></app-placement-screen>')
@@ -74,9 +63,20 @@ define(function(require){
 
 		can.route.ready();
 
-		can.each(screens, function(screen){
-			$('#content').append(screen.template(appState));
-		});
+		//Need to get configuration to Bootstrap the app
+		var farm = getFarm({
+            start_time: appState.attr('startTime'),
+            end_time: appState.attr('endTime'),
+            src: 'main'
+        }).then(function(farm){
+        	debugger
+            appState.attr('farm', farm);
+
+            can.each(screens, function(screen){
+				$('#content').append(screen.template(appState));
+			});
+
+        });
 
 	});
 

@@ -12,21 +12,82 @@
 define(function(require){
 	'use strict';
 
-	var Model = require('app/models/cacheModel');
-	window.myStorage = require('ui/storage/storage');
+	require('css!./app.css');
+	var appSettings = require('app/settings');
+	var can = require('can');
+	var appState = require('app/models/appstate');
+	var getPlacements = require('app/models/placement/getPlacements');
+	var getReadings = require('app/models/reading/getReadings');
+	var getFarm = require('app/models/farm/getFarm');
 
+	$(function(){
 
-	require('app/fixtures/demo');
-	require('can/view/stache');
+		// appState.attr('token', 'LCz7ugSWYT8SuWzQWF4A');
+		appState.attr('token', 'xq998Xz4mLmEYzZHqndu');
 
-	var cachedModel = new Model({});
+		//## Readings
 
-	var template = can.stache('<ul>{{#each .}}<li>{{name}}</li>{{/each}}</ul>');
-	var list1 = cachedModel.find({startDate: '2014-06-01'});
-	var list2 = cachedModel.find({startDate: '2014-05-29'});
-	$('#app').append(template(list1));
-	$('#app').append('<hr>');
-	$('#app').append(template(list2));
+		//getPlacements immediately returns a can.Map
+		//It will initially contain cached data
+		var readings = getReadings({
+			start_time: appState.attr('startTime'),
+			end_time: appState.attr('endTime'),
+			resolution: 900
+		});
 
+		//If any new data from requests is added, readings will be updated
+		readings.bind('change', function(){
+			console.log('readings change', arguments);
+		});
+
+		//readings also has promise methods that tell you when all
+		//underlying requests are finished
+		readings.then(function(finalReadings){
+			console.log('All readings updates done', finalReadings);
+		});
+
+		//## Placements
+
+		//getPlacements immediately returns a can.Map
+		//It will initially contain cached data
+		var placements = getPlacements({
+			start_time: appState.attr('startTime'),
+			end_time: appState.attr('endTime'),
+			resolution: 900
+		});
+
+		//If any new data from requests is added, placements will be updated
+		placements.bind('change', function(){
+			console.log('placements change', arguments);
+		});
+
+		//placements also has promise methods that tell you when all
+		//underlying requests are finished
+		placements.then(function(finalPlacements){
+			console.log('All placements updates done', finalPlacements);
+		});
+
+		//## FARM
+
+		//getFarm immediately returns a can.Map
+		//It will initially contain cached data
+		var farm = getFarm({
+			start_time: appState.attr('startTime'),
+			end_time: appState.attr('endTime'),
+			resolution: 900
+		});
+
+		//If any new data from requests is added, farm will be updated
+		farm.bind('change', function(){
+			console.log('farm change', arguments);
+		});
+
+		//farm also has promise methods that tell you when all
+		//underlying requests are finished
+		farm.then(function(finalFarm){
+			console.log('All farm updates done', finalFarm);
+		});
+
+	});
 
 });
