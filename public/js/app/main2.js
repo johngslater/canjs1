@@ -42,8 +42,8 @@ define(function(require){
 
 		//readings also has promise methods that tell you when all
 		//underlying requests are finished
-		readings.then(function(){
-			console.log('All readings updates done', readings);
+		readings.then(function(finalReadings){
+			console.log('All readings updates done', finalReadings);
 		});
 
 		//## Placements
@@ -63,8 +63,8 @@ define(function(require){
 
 		//placements also has promise methods that tell you when all
 		//underlying requests are finished
-		placements.then(function(){
-			console.log('All placements updates done', placements);
+		placements.then(function(finalPlacements){
+			console.log('All placements updates done', finalPlacements);
 		});
 
 		//## FARM
@@ -84,8 +84,8 @@ define(function(require){
 
 		//farm also has promise methods that tell you when all
 		//underlying requests are finished
-		farm.then(function(){
-			console.log('All farm updates done', farm);
+		farm.then(function(finalFarm){
+			console.log('All farm updates done', finalFarm);
 		});
 
 	});
