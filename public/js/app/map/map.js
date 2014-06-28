@@ -3,7 +3,7 @@ define(function(require){
 
 	var Component = require('can/component');
 	var appState = require('app/models/appstate');
-	var PlacementModel = require('app/models/placement');
+	var getPlacements = require('app/models/placement/getPlacements');
 	var Map = require('googlemap');
 	var MapUtils = require('maputil');
 
@@ -16,13 +16,11 @@ define(function(require){
 		placements: [],
 		updatePlacements: function() {
 			var self = this;
-			PlacementModel.findAll({
+			this.attr('placements', getPlacements({
 				start_time: appState.attr('startTime'),
                 end_time: appState.attr('endTime'),
                 src: 'map'
-			}).then(function(placements){
-				self.attr('placements', placements);
-			});
+			}));
 		},
 		getMapOptions: function() {
 			return {
@@ -74,6 +72,7 @@ define(function(require){
 			},
 			//TODO: Handle changing farm and changing the map
 			'{scope} placements': function() {
+				debugger
 				var self = this;
 				this.scope.createMap(this.element.find('.map')[0]);
 				this.map = this.scope.attr('map');

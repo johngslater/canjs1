@@ -1,38 +1,13 @@
 define(function(require){
 	'use strict';
 
-	var $ = require('jquery');
-	var Model = require('can/model');
-	var appSettings = require('app/settings');
-	var CacheModel = require('app/models/cachemodel');
+	var Map = require('can/map');
 	var MapUtils = require('maputil');
 	require('markerwithlabel');
+	require('can/map/define');
 	require('can/construct/super');
 
-	var cacheModel = new CacheModel({
-		ajaxOptions: {
-			url: appSettings.api.gauges
-		}
-	});
-
-	var Placement = Model.extend({
-		findAll: function(params) {
-			return cacheModel.find(params, false);
-		},
-		models: function(data) {
-			var placements = [];
-			for(var id in data.placement) {
-				var placement = data.placement[id];
-				var gnode_model_id = placement.gnode_model_id;
-				var senses = can.map(data.gnode_model[gnode_model_id], function(obj, key){
-					return key;
-				});
-				placement.senses = senses;
-				placements.push(placement);
-			}
-			return new Placement.List(placements);
-		}
-	}, {
+	var Placement = Map.extend({
 		//TODO: What data needs to be Observable?
 		//We can exlude it here or use LazyMap
 		define: {
@@ -41,13 +16,14 @@ define(function(require){
 			}
 		},
 		setup: function(attrs){
-			this._super(can.extend(attrs, {
+			var data = can.extend({}, attrs);
+			this._super(can.extend(data, {
 				marker: new MarkerWithLabel({
 					draggable: true,
 					icon: '/img/green-dot.png',
-					title: attrs.display_name,
-					labelContent: attrs.display_name,
-					position: MapUtils.latLng(attrs.latitude, attrs.longitude)
+					title: data.display_name,
+					labelContent: data.display_name,
+					position: MapUtils.latLng(data.latitude, data.longitude)
 				})
 			}));
 		},

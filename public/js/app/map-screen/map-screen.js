@@ -2,8 +2,6 @@ define(function(require){
     'use strict';
 
     var Component = require('can/component');
-    var appState = require('app/models/appstate');
-    var Farm = require('app/models/farm');
     var MarkerMapViewModel = require('app/map/map');
 
     require('can/view/stache');

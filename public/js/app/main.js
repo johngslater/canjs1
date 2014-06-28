@@ -15,9 +15,9 @@ define(function(require){
 	var appSettings = require('app/settings');
 	var can = require('can');
 	var appState = require('app/models/appstate');
-	var PlacementModel = require('app/models/placement');
-	var ReadingModel = require('app/models/reading');
-	var Farm = require('app/models/farm');
+	var getPlacements = require('app/models/placement/getPlacements');
+	var getReadings = require('app/models/reading/getReadings');
+	var getFarm = require('app/models/farm/getFarm');
 
 	window.appState = appState;
 
@@ -64,12 +64,12 @@ define(function(require){
 		can.route.ready();
 
 		//Need to get configuration to Bootstrap the app
-		//Should we make a simpler request with a smaller date range so it is quicker?
-		new Farm({
+		var farm = getFarm({
             start_time: appState.attr('startTime'),
             end_time: appState.attr('endTime'),
             src: 'main'
         }).then(function(farm){
+        	debugger
             appState.attr('farm', farm);
 
             can.each(screens, function(screen){

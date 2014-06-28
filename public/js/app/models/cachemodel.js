@@ -2,6 +2,8 @@ define(function(require){
 	'use strict';
 
 	var Construct = require('can/construct');
+	var Map = require('can/map');
+	var List = require('can/list');
 	var Storage = require('ui/storage/storage');
 	var moment = require('moment');
 	var appSettings = require('app/settings');
@@ -11,9 +13,7 @@ define(function(require){
 	//Make sure all requests have a token
 	require('app/models/util/tokenizeRequest');
 
-	if(appSettings.fixtures) {
-		require(['app/fixtures/gauges'], function(){});
-	}
+	require('app/fixtures/gauges');
 
 	var firstRequest = true;
 
@@ -35,8 +35,12 @@ define(function(require){
 				type: 'localStorage'
 			});
 			this._pending = {};
+			this._configSubscriptions = [];
 
 			this.config = can.extend(true, this.constructor.defaults, config);
+
+			this.getConfiguration = this._makeGetter.call(this, false);
+			this.getData = this._makeGetter.call(this, true);
 
 			return Construct.prototype.setup.apply(this, arguments);
 		},
@@ -82,66 +86,23 @@ define(function(require){
 				misses: cacheMisses
 			};
 		},
-		_merge: function(data, pending, requestForData) {
-			var self = this,
-				def = $.Deferred(),
-				isArray = Object.keys(data).length + pending.length > 1,
-				requests = can.map(pending, function(p){
-					return p.request;
-				}),
-				instanceData = isArray ? [] : {},
-				addData = can.proxy(function(data) {
-					if(isArray) {
-						instanceData.push(data);
-					} else {
-						instanceData = can.extend(true, instanceData, data);
-					}
-				}, this);
-
-			//Add existing data to Array that will become the List.
-			can.each(data, function(d, date){
-				addData(d);
-			});
-
-			//Register success callback for each pending request that will
-			//add more data to the List instance
-			can.each(pending, function(p){
-				p.request.then(function(newData){
-					//Update configuration on each request then delete configuration so data in
-					//storage is 'clean'
-					if(newData.configuration) {
-						self._updateConfiguration(newData.configuration);
-						delete newData.configuration;
-					}
-					self._storage.set(self.config.dataPrefix + p.key, newData);
-
-					addData(newData);
-				});
-			});
-			//Return a Deferred that resolves when all the pending requests resolve
-			$.when.apply(null, requests).then(function() {
-				if(requestForData) {
-					def.resolve(instanceData);
-				} else {
-					def.resolve(self._storage.get(self.config.configKey));
-				}
-			});
-			return def;
-		},
 		_updateConfiguration: function(config) {
 			var oldConfig = this._storage.get(this.config.configKey) || {},
 				newConfig = can.extend(true, oldConfig, config);
 
+			//Update configuration in storage
 			this._storage.set(this.config.configKey, newConfig);
+
+			can.each(this._configSubscriptions, function(update) {
+				update(newConfig);
+			});
 		},
-		find: function(params, isData) {
+		_getServerData: function(params, success, error) {
 			var self = this,
 				requestParams = can.extend({}, params),
-				requestForData = typeof isData !== 'undefined' ? isData : true,
 				cacheInfo = this._cacheLookup(params),
 				pendingRequests = [];
 
-			console.info('CacheModel:', params);
 			delete params.src;
 
 			can.each(cacheInfo.misses, function(date){
@@ -162,8 +123,7 @@ define(function(require){
 							endDate: date
 						})
 					});
-					//If this is the first request, we wait until it is complete before
-					//making anymore requests so we have the configuration
+					//If this is the first request, we need to retrieve the configuration
 					if(firstRequest) {
 						firstRequest = false;
 						ajaxOptions.data.configuration_last_received_at = '';
@@ -176,7 +136,54 @@ define(function(require){
 				}
 			});
 
-			return this._merge(cacheInfo.hits, pendingRequests, requestForData);
+			return {
+				data: cacheInfo.hits,
+				pending: pendingRequests
+			};
+		},
+		syncConfiguration: function(onUpdate) {
+			this._configSubscriptions.push(onUpdate);
+		},
+		//This creates the getConfiguration (isData === false) and getData (isData === true) functions
+		_makeGetter: function(isData){
+			return function(params, success, error) {
+				console.info('CacheModel::get(' + isData + ')', params);
+
+				var self = this,
+					dataInfo = this._getServerData(params, success, error || function(){}),
+					requests = can.map(dataInfo.pending, function(p) {
+						return p.request;
+					});
+
+				if(isData) {
+					can.each(dataInfo.data, function(d){
+						var data = can.extend({}, d);
+						success(data);
+					});
+				} else {
+					success(can.extend({}, (this._storage.get(this.config.configKey) || {})));
+				}
+
+				can.each(dataInfo.pending, function(p){
+					p.request.then(function(newData){
+						var data = can.extend({}, newData);
+						if(data.configuration) {
+							self._updateConfiguration(data.configuration);
+							if(!isData) {
+								success(can.extend({}, data.configuration));
+							}
+							delete data.configuration;
+						}
+						//Add request data to cache
+						self._storage.set(self.config.dataPrefix + p.key, data);
+						if(isData) {
+							success(data);
+						}
+					}, error);
+				});
+
+				return $.when.apply(null, requests);
+			};
 		}
 	});
 

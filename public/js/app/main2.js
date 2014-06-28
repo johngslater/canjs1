@@ -16,45 +16,77 @@ define(function(require){
 	var appSettings = require('app/settings');
 	var can = require('can');
 	var appState = require('app/models/appstate');
-	var PlacementModel = require('app/models/placement');
-	var ReadingModel = require('app/models/reading');
-	var Farm = require('app/models/farm');
+	var getPlacements = require('app/models/placement/getPlacements');
+	var getReadings = require('app/models/reading/getReadings');
+	var getFarm = require('app/models/farm/getFarm');
 
 	$(function(){
 
 		// appState.attr('token', 'LCz7ugSWYT8SuWzQWF4A');
 		appState.attr('token', 'xq998Xz4mLmEYzZHqndu');
 
-		PlacementModel.findAll({
+		//## Readings
+
+		//getPlacements immediately returns a can.Map
+		//It will initially contain cached data
+		var readings = getReadings({
 			start_time: appState.attr('startTime'),
 			end_time: appState.attr('endTime'),
 			resolution: 900
-		}).then(function(data) {
-			console.log('Got placements', data);
-		}, function(){
-			console.error('ERROR', arguments);
 		});
 
-		ReadingModel.findAll({
+		//If any new data from requests is added, readings will be updated
+		readings.bind('change', function(){
+			console.log('readings change', arguments);
+		});
+
+		//readings also has promise methods that tell you when all
+		//underlying requests are finished
+		readings.then(function(){
+			console.log('All readings updates done', readings);
+		});
+
+		//## Placements
+
+		//getPlacements immediately returns a can.Map
+		//It will initially contain cached data
+		var placements = getPlacements({
 			start_time: appState.attr('startTime'),
 			end_time: appState.attr('endTime'),
 			resolution: 900
-		}).then(function(data) {
-			console.log('Got readings', data);
-		}, function(){
-			console.error('ERROR', arguments);
 		});
 
-		new Farm({
+		//If any new data from requests is added, placements will be updated
+		placements.bind('change', function(){
+			console.log('placements change', arguments);
+		});
+
+		//placements also has promise methods that tell you when all
+		//underlying requests are finished
+		placements.then(function(){
+			console.log('All placements updates done', placements);
+		});
+
+		//## FARM
+
+		//getFarm immediately returns a can.Map
+		//It will initially contain cached data
+		var farm = getFarm({
 			start_time: appState.attr('startTime'),
 			end_time: appState.attr('endTime'),
 			resolution: 900
-		}).then(function(data) {
-			console.log('Got farm', data);
-		}, function(){
-			console.error('ERROR', arguments);
 		});
 
+		//If any new data from requests is added, farm will be updated
+		farm.bind('change', function(){
+			console.log('farm change', arguments);
+		});
+
+		//farm also has promise methods that tell you when all
+		//underlying requests are finished
+		farm.then(function(){
+			console.log('All farm updates done', farm);
+		});
 
 	});
 

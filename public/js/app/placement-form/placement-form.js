@@ -2,8 +2,6 @@ define([
     'require',
     'can/component',
     'app/models/appstate',
-    'app/models/placement',  // JGS
-    'app/models/farm', // JGS
     'ui/senseicons/senseicons',
     'text!./placement-form.stache',
     'can/view/stache',
