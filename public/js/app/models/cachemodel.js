@@ -2,21 +2,32 @@ define(function(require){
 	'use strict';
 
 	var Construct = require('can/construct');
+	var Map = require('can/map');
 	var List = require('can/list');
 	var Storage = require('ui/storage/storage');
 	var moment = require('moment');
+	var appSettings = require('app/settings');
+
+	require('can/construct/proxy');
+
+	//Make sure all requests have a token
+	require('app/models/util/tokenizeRequest');
+
+	require('app/fixtures/gauges');
+
+	var firstRequest = true;
 
 	var CacheModel = Construct.extend({
 		defaults: {
 			dateFormat: 'YYYY-MM-DD',
-			prefix: 'gauges_',
+			configKey: 'gProducts',
+			dataPrefix: 'gauges_',
 			daySpan: 3,
 			ajaxOptions: {
 				type: 'get',
 				url: '/gauges',
 				dataType: 'json'
-			},
-			List: List
+			}
 		}
 	}, {
 		setup: function(config) {
@@ -24,8 +35,12 @@ define(function(require){
 				type: 'localStorage'
 			});
 			this._pending = {};
+			this._configSubscriptions = [];
 
 			this.config = can.extend(true, this.constructor.defaults, config);
+
+			this.getConfiguration = this._makeGetter.call(this, false);
+			this.getData = this._makeGetter.call(this, true);
 
 			return Construct.prototype.setup.apply(this, arguments);
 		},
@@ -37,7 +52,8 @@ define(function(require){
 				request.done(function(){
 					delete pending[key];
 				});
-				return pending[key] = request;
+				pending[key] = request;
+				return request;
 			}
 		},
 		_isPending: function(key) {
@@ -53,11 +69,10 @@ define(function(require){
 
 			//Loop through the days between start and end and determine if we have the data.
 			//We do this instead of keeping track of the dates cached because this will
-			//support discontinuous sets of dates. The solution to handle this with tracking
-			//still involves looping and extra overhead
+			//support discontinuous sets of dates.
 			for(iterator; iterator.isBefore(endDate); iterator.add('days', 1)) {
 				currentDay = iterator.format(this.config.dateFormat);
-				if(!(lookup = this._storage.get(this.config.prefix + currentDay))) {
+				if(!(lookup = this._storage.get(this.config.dataPrefix + currentDay))) {
 					//Miss, store date so we can do a request.
 					cacheMisses.push(currentDay);
 				} else {
@@ -71,13 +86,27 @@ define(function(require){
 				misses: cacheMisses
 			};
 		},
-		find: function(params) {
+		_updateConfiguration: function(config) {
+			var oldConfig = this._storage.get(this.config.configKey) || {},
+				newConfig = can.extend(true, oldConfig, config);
+
+			//Update configuration in storage
+			this._storage.set(this.config.configKey, newConfig);
+
+			can.each(this._configSubscriptions, function(update) {
+				update(newConfig);
+			});
+		},
+		_getServerData: function(params, success, error) {
 			var self = this,
+				requestParams = can.extend({}, params),
 				cacheInfo = this._cacheLookup(params),
 				pendingRequests = [];
 
+			delete params.src;
+
 			can.each(cacheInfo.misses, function(date){
-				var key = self.config.prefix + date,
+				var key = self.config.dataPrefix + date,
 					ajaxOptions;
 
 				//If request for this date is already pending, we use the existing pending request
@@ -87,48 +116,74 @@ define(function(require){
 						request: self._pending[key]
 					});
 				} else {
+					//Override start/end date to be a single day
 					ajaxOptions = can.extend({}, self.config.ajaxOptions, {
-						data: {
+						data: can.extend(requestParams, {
 							startDate: date,
 							endDate: date
-						}
+						})
 					});
+					//If this is the first request, we need to retrieve the configuration
+					if(firstRequest) {
+						firstRequest = false;
+						ajaxOptions.data.configuration_last_received_at = '';
+					}
 
 					pendingRequests.push({
 						key: date,
-						request: self._addPending(self.config.prefix + date, can.ajax(ajaxOptions))
+						request: self._addPending(self.config.dataPrefix + date, can.ajax(ajaxOptions))
 					});
 				}
 			});
 
-			return this._merge(cacheInfo.hits, pendingRequests);
+			return {
+				data: cacheInfo.hits,
+				pending: pendingRequests
+			};
 		},
-		_merge: function(data, pending) {
-			var self = this,
-				instanceData = [],
-				instance;
+		syncConfiguration: function(onUpdate) {
+			this._configSubscriptions.push(onUpdate);
+		},
+		//This creates the getConfiguration (isData === false) and getData (isData === true) functions
+		_makeGetter: function(isData){
+			return function(params, success, error) {
+				console.info('CacheModel::get(' + isData + ')', params);
 
-			//Add existing data to Array that will become the List returned.
-			can.each(data, function(d, date){
-				instanceData.push(d);
-			});
+				var self = this,
+					dataInfo = this._getServerData(params, success, error || function(){}),
+					requests = can.map(dataInfo.pending, function(p) {
+						return p.request;
+					});
 
-			//Create list.
-			instance = new this.config.List(instanceData);
+				if(isData) {
+					can.each(dataInfo.data, function(d){
+						var data = can.extend({}, d);
+						success(data);
+					});
+				} else {
+					success(can.extend({}, (this._storage.get(this.config.configKey) || {})));
+				}
 
-			//Register success callback for each pending request that will
-			//add more data to the List instance
-			can.each(pending, function(p){
-				p.request.then(function(newData){
-					var parsedData = self._parseData(newData);
-					self._storage.set(self.config.prefix + p.key, parsedData);
-					instance.push(parsedData);
+				can.each(dataInfo.pending, function(p){
+					p.request.then(function(newData){
+						var data = can.extend({}, newData);
+						if(data.configuration) {
+							self._updateConfiguration(data.configuration);
+							if(!isData) {
+								success(can.extend({}, data.configuration));
+							}
+							delete data.configuration;
+						}
+						//Add request data to cache
+						self._storage.set(self.config.dataPrefix + p.key, data);
+						if(isData) {
+							success(data);
+						}
+					}, error);
 				});
-			});
-			return instance;
-		},
-		_parseData: function(data){
-			return data;
+
+				return $.when.apply(null, requests);
+			};
 		}
 	});
 

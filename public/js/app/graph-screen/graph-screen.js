@@ -9,7 +9,7 @@ define([
   'use strict';
 
     var template = require('text!./graph-screen.stache');
-	var ViewModel = {};
+    var ViewModel = {};
 
   Component.extend({
     tag     :'app-graph-screen',
