@@ -1,6 +1,7 @@
 define([
     'require',
     'can/component',
+    'app/models/farm/farm',
     'app/models/appstate',
     'app/placement-form/placement-form',
     'text!./placement-screen.stache',
@@ -11,7 +12,6 @@ define([
     var template = require('text!./placement-screen.stache');
 
 	var ViewModel = {
-
         gotoGraph: function() {
             appState.attr('screen', 'graph');
         }

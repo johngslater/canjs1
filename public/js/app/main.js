@@ -32,8 +32,8 @@ define(function(require){
 
 	$(function(){
 
-		// appState.attr('token', 'LCz7ugSWYT8SuWzQWF4A');
-		appState.attr('token', 'xq998Xz4mLmEYzZHqndu');
+		appState.attr('token', 'LCz7ugSWYT8SuWzQWF4A');
+//		appState.attr('token', 'xq998Xz4mLmEYzZHqndu');
 
 		//http://canjs.com/docs/can.route.map.html
 		can.route.map(appState);
