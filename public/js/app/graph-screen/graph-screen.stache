@@ -8,7 +8,8 @@ should be set by graph-screen.js/fsm
 <hr/>
 {{sense}}
 <hr/>
+the new stuff
 {{#if ./placement}}
-<gt-senseicons placement="{placement}">put the icons here</gt-senseicons>
+    <gt-iconofsense placement="{placement}" sense="{sense}">xxxxx2Breplacedxxxxx</gt-iconofsense>
 {{/if}}
 

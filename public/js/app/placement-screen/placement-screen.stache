@@ -12,7 +12,7 @@ template: can.stache(
 	<app-placement-form placement={placement}></app-placement-form> <!-- {placement} from js/app/main.js -->
 
 
-
+*** gt-senseicons is called here ***
     <gt-senseicons placement="{placement}"></gt-senseicons>
 
 

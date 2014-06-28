@@ -2,12 +2,12 @@ define([
   'require',
   'can/component',
   'app/models/appstate',
-  'app/senseicons/senseicons',
+  'app/iconofsense/iconofsense',
 
   'text!./graph-screen.stache',
   'app/graph/graph',  //  w/Curtis Monday
   'can/view/stache'
-], function (require, Component, appState,senseIcons) {
+], function (require, Component, appState,iconOfSense) {
   'use strict';
 
   var template = require('text!./graph-screen.stache');
