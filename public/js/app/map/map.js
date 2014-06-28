@@ -1,16 +1,27 @@
-define([
-	'can/component',
-  'app/models/appstate',
-	'googlemap',
-	'maputil',
-	'can/map/define',
-	'css!./map.css'
-], function(Component, appState, Map, MapUtils){
+define(function(require){
 	'use strict';
+
+	var Component = require('can/component');
+	var appState = require('app/models/appstate');
+	var getPlacements = require('app/models/placement/getPlacements');
+	var Map = require('googlemap');
+	var MapUtils = require('maputil');
+
+	require('can/map/define');
+	require('css!./map.css');
 
 	var viewModel = can.Map.extend({
 		map: null,
 		mapReady: false,
+		placements: [],
+		updatePlacements: function() {
+			var self = this;
+			this.attr('placements', getPlacements({
+				start_time: appState.attr('startTime'),
+                end_time: appState.attr('endTime'),
+                src: 'map'
+			}));
+		},
 		getMapOptions: function() {
 			return {
 				mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -36,7 +47,7 @@ define([
 		},
 		addMarker: function(placement) {
 			var map = this.attr('map');
-			var list = this.attr('farm.placements');
+			var list = this.attr('placements');
 
 			placement.bindMapEvents(list);
 			this.updateBounds(placement.marker);
@@ -56,18 +67,12 @@ define([
 		template: '<div class="map"></div>',
 		scope: viewModel,
 		events: {
-			'inserted': function(){  ;
-			},
-			'{scope.farm.placements} remove': function(Scope, ev, added) {
-				//TODO: Cleanup map events and remove from map
-				console.log('remove', arguments);
-			},
-			'{scope.farm.placements} add': function(Scope, ev, added) {
-				//Bind map events and add to map
-				console.log('add', arguments);
+			'inserted': function(){
+				this.scope.updatePlacements();
 			},
 			//TODO: Handle changing farm and changing the map
-			'{scope} farm': function() {
+			'{scope} placements': function() {
+				debugger
 				var self = this;
 				this.scope.createMap(this.element.find('.map')[0]);
 				this.map = this.scope.attr('map');
@@ -78,25 +83,25 @@ define([
 			},
 			'{scope} mapReady': function(Scope, ev, newVal){
 				var scope = this.scope;
-				var bounds = new google.maps.LatLngBounds(MapUtils.latLng(this.farm.lat, this.farm.lng));
+				var bounds = new google.maps.LatLngBounds(MapUtils.latLng(appState.farm.lat, appState.farm.lng));
 				if(newVal) {
-					scope.attr('farm.placements').each(function(placement) {
+					scope.attr('placements').each(function(placement) {
 						scope.addMarker(placement);
 					});
 				} else {
 					//would this ever happen, maybe when we hide the map?
 				}
 			},
-			'{scope.farm.placements} click': function(markers, ev, mapEv, placement) {
+			'{scope.placements} click': function(markers, ev, mapEv, placement) {
 				// appState.attr('activePlacement', placement);
-				appState.attr('placementId', placement.id);
+				appState.attr('placement', placement);
 				appState.attr('screen', 'placement');
 			},
-			'{scope.farm.placements} dragstart': function(markers, ev, mapEv, placement) {
+			'{scope.placements} dragstart': function(markers, ev, mapEv, placement) {
 				placement.attr('moves', placement.attr('moves') + 1);
-				appState.attr('placementId', placement.id);
+				appState.attr('placement', placement);
 			},
-			'{scope.farm.placements} drag': function(markers, ev, mapEv, placement) {
+			'{scope.placements} drag': function(markers, ev, mapEv, placement) {
 				var position = mapEv.latLng;
 				placement.attr({
 					latitude: position.lat(),

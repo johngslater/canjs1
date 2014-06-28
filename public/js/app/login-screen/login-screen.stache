@@ -1,5 +1,0 @@
-<h2>{{./farm.name}}</h2>
-<app-map farm="{farm}"></app-map>
-{{#if ./placement}}
-	<app-placement-form editable=false placement={placement}></app-placement-form>
-{{/if}}

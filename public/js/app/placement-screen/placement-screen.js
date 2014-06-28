@@ -1,7 +1,6 @@
 define([
     'require',
     'can/component',
-    'app/models/farm',
     'app/models/appstate',
     'app/placement-form/placement-form',
     'text!./placement-screen.stache',

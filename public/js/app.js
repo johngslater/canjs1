@@ -4,6 +4,7 @@ require.config({
       'app': '../app',
       'ui':'../ui',
       'jquery' : 'jquery/jquery',
+      'jquery-ui' : 'jquery-ui/ui',
       'can': 'canjs/amd/can',
       'googlemap': 'googlemap/googlemap',
       'moment': 'momentjs/moment',
@@ -16,8 +17,7 @@ require.config({
     },
     shim: {
       'markerwithlabel': ['googlemap']
-    },
-    fixtures: false
+    }
 });
 
 require(['app/main']);
