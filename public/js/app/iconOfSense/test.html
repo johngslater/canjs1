@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>Icon Tests</title>
+    <link rel="stylesheet" href="/js/lib/qunit/qunit/qunit.css"/>
+    <script data-main="/js/app/test/require_config" src="/js/lib/requirejs/require.js"></script>
+    <script src="/js/lib/qunit/qunit/qunit.js"></script>
+    <script>
+
+ // my old stuff
+    // from http://stackoverflow.com/questions/10485039/simple-example-for-using-require-js
+     //    // https://github.com/requirejs/example-jquery-cdn
+     //    require.config({ baseUrl: '../../lib',"paths": { "jquery": "jquery/jquery"}});
+
+        // trying http://www.bennadel.com/blog/2287-using-jquery-as-a-named-module-in-requirejs.htm
+     //   require(["jquery"],function(jQ){ debugger; }); // ck what $ and jQ does
+     //    var icon_render = {   // todo: kludge, repeats code from senseIconsView.js
+     //      lt_lumen  : {render: function(parent){ sun_draw(parent, F); }}, // F -> dont draw grnd
+     //      at_celsius: {render: function(parent){ thermometer_draw(parent, F); }},
+     //      st_celsius: {render: function(parent){ thermometer_draw(parent, T); }},
+     //      syn_sm_vwc: {render: function(parent){ drop_draw(parent, T); }},
+     //      syn_ec_dsm: {render: function(parent){ elec_draw(parent, T); }}
+     //    };
+
+        // require(['jquery', './senseIcons.js'], function ($, senseIcons) {
+        //   //  var jQ=require("http://code.jquery.com/jquery.js");
+        //
+        //   var newCnvs=function(){return $('<canvas>').attr({ width:'45', height:'45' }); };
+        //
+        //   var cnvs=newCnvs(); senseIcons.sun(cnvs[0],true); $('#icons').append(cnvs);
+        //   var cnvs=newCnvs(); senseIcons.thermometer(cnvs[0],true); $('#icons').append(cnvs);
+        //   var cnvs=newCnvs(); senseIcons.thermometer(cnvs[0],false); $('#icons').append(cnvs);
+        //   var cnvs=newCnvs(); senseIcons.drop(cnvs[0],true); $('#icons').append(cnvs);
+        //   var cnvs=newCnvs(); senseIcons.elec(cnvs[0],true); $('#icons').append(cnvs);
+        //
+        //// icon_draw(cnvs,_sense,reading);
+        // });
+
+      //From https://github.com/jrburke/requirejs/wiki/Test-frameworks
+      QUnit.config.autostart = false;
+      window.addEventListener('load', function onLoad(){
+        setTimeout(function(){
+          require(['./iconofsense_test.js'], function(){
+              QUnit.load();
+              QUnit.start();
+          })
+        }, 10);
+        window.removeEventListener("load", onLoad, true);
+      }, true);
+    </script>
+  </head>
+  <body>
+    <div id="qunit"></div>
+    <div id="qunit-test-area"></div>
+  </body>
+</html>

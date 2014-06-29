@@ -1,5 +1,5 @@
 //Wrapper around various storage methods
-//Should detech the best method to use given the environment
+//Should detect the best method to use given the environment
 //Currently we hardcode it to localStorage but session, hash, cookie and plain old object storage can be implements
 define(function(require){
 	'use strict';
@@ -113,12 +113,11 @@ define(function(require){
 			}
 		},
 		getCurrentSize: function() {
-			var string = '';
-
+			var siz=0;
 			this.getAll(function(key, data){
-				string += data;
+				siz += data.length;
 			});
-			return string.length;
+			return siz;
 		},
 		set: function(key, value) {
 			//TODO: try/catch to detect quota exceeded

@@ -42,8 +42,40 @@ define(function(require){
 			this.getConfiguration = this._makeGetter.call(this, false);
 			this.getData = this._makeGetter.call(this, true);
 
-			return Construct.prototype.setup.apply(this, arguments);
+			return Construct.prototype.setup.apply(this, arguments); // arguments[0]===config
 		},
+    find: function(params) {
+      var self = this,
+        cacheInfo = this._cacheLookup(params),
+        pendingRequests = [];
+
+      can.each(cacheInfo.misses, function(date){
+        var key = self.config.prefix + date,
+          ajaxOptions;
+
+        //If request for this date is already pending, we use the existing pending request
+        if(self._isPending(key)) {
+          pendingRequests.push({
+            key: date,
+            request: self._pending[key]
+          });
+        } else {
+          ajaxOptions = can.extend({}, self.config.ajaxOptions, {
+            data: {
+              startDate: date,
+              endDate: date
+            }
+          });
+
+          pendingRequests.push({
+            key: date,
+            request: self._addPending(self.config.prefix + date, can.ajax(ajaxOptions))
+          });
+        }
+      });
+
+      return this._merge(cacheInfo.hits, pendingRequests); // merge no longer exits
+    },
 		_addPending: function(key, request) {
 			var pending = this._pending;
 			if(pending[key]) {
@@ -62,7 +94,7 @@ define(function(require){
 		_cacheLookup: function(findParams) {
 			var startDate = (findParams.startDate ? moment(findParams.startDate) : moment().subtract('days', this.config.daySpan)).format(this.config.dateFormat),
 				endDate = (findParams.endDate ? moment(findParams.endDate) : moment()).format(this.config.dateFormat),
-				iterator = moment(startDate), //Clone startDare so we can manipulate it.
+				iterator = moment(startDate), //Clone startDate so we can manipulate it.
 				cacheMisses = [],
 				cachedData = {},
 				currentDay, lookup;
@@ -72,12 +104,12 @@ define(function(require){
 			//support discontinuous sets of dates.
 			for(iterator; iterator.isBefore(endDate); iterator.add('days', 1)) {
 				currentDay = iterator.format(this.config.dateFormat);
-				if(!(lookup = this._storage.get(this.config.dataPrefix + currentDay))) {
-					//Miss, store date so we can do a request.
-					cacheMisses.push(currentDay);
+
+        lookup = this._storage.get(this.config.prefix + currentDay)
+				if(!(lookup)) {
+					cacheMisses.push(currentDay); //Miss, store date so we can do a request.
 				} else {
-					//Hit.
-					cachedData[currentDay] = lookup;
+					cachedData[currentDay] = lookup; //Hit.
 				}
 			}
 
@@ -148,7 +180,6 @@ define(function(require){
 		_makeGetter: function(isData){
 			return function(params, success, error) {
 				console.info('CacheModel::get(' + isData + ')', params);
-
 				var self = this,
 					dataInfo = this._getServerData(params, success, error || function(){}),
 					requests = can.map(dataInfo.pending, function(p) {

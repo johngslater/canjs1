@@ -51,7 +51,6 @@ define(function(require) {
 					}
 				}
 			}
-
 		}
 	});
 

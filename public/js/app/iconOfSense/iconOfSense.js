@@ -3,14 +3,14 @@ define(function(require){
 
 	var Component = require('can/component');
 
-	var template = require('text!./senseicons.stache');
+	var template = require('text!./iconofsense.stache');
 
 	require('ui/iconcanvas/iconcanvas'); // jun 26
 
 	var ViewModel = {}; // sense property will be inserted automatically becuz ...
 
 	Component.extend({
-		tag: 'gt-senseicons',
+		tag: 'gt-iconofsense',
 		template: can.stache(template),
 		scope: ViewModel,
 		events: {
