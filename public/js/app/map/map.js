@@ -70,9 +70,7 @@ define(function(require){
 			'inserted': function(){
 				this.scope.updatePlacements();
 			},
-			//TODO: Handle changing farm and changing the map
 			'{scope} placements': function() {
-				debugger
 				var self = this;
 				this.scope.createMap(this.element.find('.map')[0]);
 				this.map = this.scope.attr('map');

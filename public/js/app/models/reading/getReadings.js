@@ -24,9 +24,7 @@ define(function(require){
 			update = function(data) {
 				instance.attr(parseData(data));
 			},
-			lookupDef = cacheModel.getData(params, function(data){
-				update(data);
-			}, function(){
+			lookupDef = cacheModel.getData(params, update, function(){
 				console.error(arguments);
 			});
 
