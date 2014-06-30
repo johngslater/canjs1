@@ -56,53 +56,38 @@ define(function(require){
       var map = this.attr('map');
 			var list = this.attr('placements');
 
-      placement.bindMapEvents(list);
-      this.updateBounds(placement.marker);
-      placement.show(map);
-    },
-    removeMarker: function(placement) {
-      var map = this.attr('map');
+			placement.bindMapEvents(list);
+			this.updateBounds(placement.marker);
+			placement.show(map);
+		},
+		removeMarker: function(placement) {
+			var map = this.attr('map');
 
-      placement.unbindMapEvents(list);
-      // Completely recompute bounds?
-      placement.remove(map);
-    }
-  });
-  //Need to trigger resize on the map if we hide it then show it again
-  can.Component.extend({
-    tag: 'app-map',
-    template: '<div class="map"></div>',
-    scope: viewModel,
-    events: {
-      'inserted': function(){
-        this.scope.updatePlacements();
-
-      },
-
-      // curtis took this out
-//      '{scope.farm.placements} remove': function(Scope, ev, added) {
-//        //TODO: Cleanup map events and remove from map
-//        console.log('remove', arguments);
-//      },
-//      '{scope.farm.placements} add': function(Scope, ev, added) {
-//        //Bind map events and add to map
-//        console.log('add', arguments);
-//      },
-
-
-      //TODO: Handle changing farm and changing the map
+			placement.unbindMapEvents(list);
+			// Completely recompute bounds?
+			placement.remove(map);
+		}
+	});
+	//Need to trigger resize on the map if we hide it then show it again
+	can.Component.extend({
+		tag: 'app-map',
+		template: '<div class="map"></div>',
+		scope: viewModel,
+		events: {
+			'inserted': function(){
+				this.scope.updatePlacements();
+			},
 			'{scope} placements': function() {
-        // debugger
-        var self = this;
-        this.scope.createMap(this.element.find('.map')[0]);
-        this.map = this.scope.attr('map');
-        this.farm = this.scope.attr('farm');
-        google.maps.event.addListenerOnce(this.map, 'idle', function(){
-          self.scope.attr('mapReady', true);
-        });
-      },
-      '{scope} mapReady': function(Scope, ev, newVal){
-        var scope = this.scope;
+				var self = this;
+				this.scope.createMap(this.element.find('.map')[0]);
+				this.map = this.scope.attr('map');
+				this.farm = this.scope.attr('farm');
+				google.maps.event.addListenerOnce(this.map, 'idle', function(){
+					self.scope.attr('mapReady', true);
+				});
+			},
+			'{scope} mapReady': function(Scope, ev, newVal){
+				var scope = this.scope;
 				var bounds = new google.maps.LatLngBounds(MapUtils.latLng(appState.farm.lat, appState.farm.lng));
         if(newVal) {
 					scope.attr('placements').each(function(placement) {
@@ -114,22 +99,21 @@ define(function(require){
       },
 
       '{scope.placements} click': function(markers, ev, mapEv, placement) {
-      				// appState.attr('activePlacement', placement);
-      				appState.attr('placement', placement);
-      				appState.attr('screen', 'placement');
-      			},
-      			'{scope.placements} dragstart': function(markers, ev, mapEv, placement) {
-      				placement.attr('moves', placement.attr('moves') + 1);
-      				appState.attr('placement', placement);
-      			},
-      			'{scope.placements} drag': function(markers, ev, mapEv, placement) {
-      				var position = mapEv.latLng;
-      				placement.attr({
-      					latitude: position.lat(),
-      					longitude: position.lng()
-      				});
-      			},
-
+        // appState.attr('activePlacement', placement);
+        appState.attr('placement', placement);
+        appState.attr('screen', 'placement');
+      },
+      '{scope.placements} dragstart': function(markers, ev, mapEv, placement) {
+        placement.attr('moves', placement.attr('moves') + 1);
+        appState.attr('placement', placement);
+      },
+      '{scope.placements} drag': function(markers, ev, mapEv, placement) {
+        var position = mapEv.latLng;
+        placement.attr({
+          latitude: position.lat(),
+          longitude: position.lng()
+        });
+      },
 
       '{appState} showMap': function(appState, ev, newVal) { // {appState} is looked up on options, or looks up globally
         // also look at http://canjs.com/docs/can.Control.html#section_Listeningtoevents

@@ -112,12 +112,11 @@ define(function(require){
 		can.route.ready();
 
 		//Need to get configuration to Bootstrap the app
-		var farm = getFarm({
+		getFarm({
             start_time: appState.attr('startTime'),
             end_time: appState.attr('endTime'),
             src: 'main'
         }).then(function(farm){
-//        	debugger
             appState.attr('farm', farm);
 
             can.each(screens, function(screen){
